@@ -35,5 +35,10 @@ EXTRAKEY_ENABLE = yes      # Audio and system control
 # N-key rollover instead of 6-key rollover
 NKRO_ENABLE = yes          # Enable N-Key Rollover
 
+KEY_OVERRIDE_ENABLE = yes
+REPEAT_KEY_ENABLE = yes
+LEADER_ENABLE = yes
+COMBO_ENABLE = yes
+
 SRC += oneshot.c
 SRC += swapper.c
