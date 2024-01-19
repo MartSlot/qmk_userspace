@@ -215,6 +215,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
+
+bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
+    uint8_t layer = get_highest_layer(layer_state | default_layer_state);
+    return false;
+}
+
 void leader_start_user() {
     leader_active = true;
 }
@@ -227,6 +233,10 @@ void leader_end_user(void) {
        SEND_STRING("Mart Slot");
     } else if (leader_sequence_three_keys(KC_A, KC_D, KC_D)) {
         SEND_STRING("Soeverein 78\n3817 HV\nAmersfoort");
+    } else if (leader_sequence_five_keys(KC_P, KC_H, KC_O, KC_N, KC_E)) {
+        SEND_STRING("+31630511860");
+    } else if (leader_sequence_four_keys(KC_C, KC_A, KC_P, KC_S)) {
+        SEND_STRING(SS_TAP(X_CAPS_LOCK));
     }
 }
 
