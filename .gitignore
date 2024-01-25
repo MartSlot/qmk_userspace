@@ -9,3 +9,8 @@
 *.hex
 *.bin
 *.uf2
+
+# Clion/IntelliJ specific stuff
+.idea/**/workspace.xml
+.idea/**/usage.statistics.xml
+.idea/**/shelf
