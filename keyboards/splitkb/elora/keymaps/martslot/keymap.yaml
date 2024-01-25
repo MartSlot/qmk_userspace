@@ -1,0 +1,119 @@
+layout:
+  ortho_layout: 
+    split: true
+    rows: 3
+    columns: 5
+    thumbs: 2
+layers:
+  QWERTY:
+    - ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"]
+    - ["A", "S", "D", "F", "G", "H", "J", "K", "L", ";"]
+    - ["Z", "X", "C", "V", "B", "N", "M", ",", ".", "'"]
+    - {h: Nav,  t: Space}
+    - {h: SHRT,   t: "SHRT (OS)"}
+    - ""
+    - {h: Shift, t: Repeat}
+  Combos:
+    - ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"]
+    - ["A", "S", "D", "F", "G", "H", "J", "K", "L", ";"]
+    - ["Z", "X", "C", "V", "B", "N", "M", ",", ".", "'"]
+    - {h: Nav,  t: Space}
+    - {h: SHRT,   t: "SHRT (OS)"}
+    - ""
+    - {h: Shift, t: Repeat}
+  Shortcuts:
+    - ["Ctrl Q", "Ctrl W", "Ctrl E", "Ctrl R", "Ctrl T", "", "", "", "", ""]
+    - ["Ctrl A", "Ctrl S", "Ctrl D", "Ctrl F", "Ctrl G", "", "", "", "", ""]
+    - ["Ctrl Z", "Ctrl X", "Ctrl C", "Ctrl V", "Ctrl Y", "", "", "", "", ""]
+    - {h: Nav,  t: Space}
+    - {type: held}
+    - ""
+    - {Function}
+  Navigation:
+    - ["Esc", "Win + D", "Prev Window", "Next Window", "", "", "Home", "Up", "End", ""]
+    - ["", "Gui", "Alt", "Ctrl", "", "", "Left", "Down", "Right", ""]
+    - ["", "", "Prev Tab", "Next Tab", "", "", "Page Up", "Page Down", "", ""]
+    - {h: Nav,  t: Space}
+    - {h: SHRT,   t: "SHRT (OS)"}
+    - ""
+    - {h: Shift, t: Repeat}
+  Symbols:
+    - [{t: "'", h:""}, {t: "<", h:"<="}, {t: ">", h:">="}, {t: "\"", h:""}, {t: "", h:""}, {t: "`", h:""}, {t: ":", h:"\"\""}, {t: "[", h:""}, {t: "]", h:""}, {t: "%", h:""}]
+    - [{t: "!", h:"!="}, {t: "-", h:"-="}, {t: "+", h:"+="}, {t: "=", h:"=="}, {t: "#", h:""}, {t: "|", h:"||"}, {t: "_", h:""}, {t: "(", h:""}, {t: ")", h:""}, {t: "?", h:""}]
+    - [{t: "^", h:""}, {t: "/", h:"//"}, {t: "*", h:"*="}, {t: "\\", h:""}, {t: "$", h:""}, {t: "~", h:""}, {t: "&", h:"&&"}, {t: "{", h:""}, {t: "}", h:""}, {t: "@", h:""}]
+    - {h: Nav,  t: Space}
+    - {h: SHRT,   t: "SHRT (OS)"}
+    - ""
+    - {h: Cancel, t: Repeat}
+  Numbers:
+    - ["Gui", "Alt", "Ctrl", "Shift", "", "", "Shift", "Ctrl", "Alt", "Gui"]
+    - ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
+    - ["+", "-", "*", "/", "", "", "", ",", ".", ""]
+    - {h: Nav,  t: Space, type: ghost}
+    - {h: SHRT,   t: "SHRT (OS)", type: ghost}
+    - ""
+    - {h: Shift, t: Repeat, type: ghost}
+  Function:
+    - ["Gui", "Alt", "Ctrl", "Shift", "F11", "F12", "Shift", "Ctrl", "Alt", "Gui"]
+    - ["F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10"]
+    - ["", "", "", "", "", "", "", "", "", ""]
+    - {h: Nav,  t: Space}
+    - {type: held}
+    - ""
+    - {type: held}
+  Gaming:
+    - ["Tab", "Q", "W", "E", "R", "Y", "U", "I", "O", "P"]
+    - ["Shift", "A", "S", "D", "F", "H", "J", "K", "L", ";"]
+    - ["Ctrl", "Z", "X", "C", "V", "N", "M", ",", ".", "'"]
+    - {Space}
+    - {Extra}
+    - {Shift}
+    - {Qwerty}
+  Gaming Extra:
+    - ["1", "2", "3", "4", "5", "", "", "", "", ""]
+    - ["6", "7", "8", "9", "0", "", "", "", "", ""]
+    - ["B", "G", "T", "I", "M", "", "", "", "", ""]
+    - {t: Enter}
+    - {type: held}
+    - {Shift}
+    - {Qwerty}
+  # LAYER:
+    # - ["", "", "", "", "", "", "", "", "", ""]
+    # - ["", "", "", "", "", "", "", "", "", ""]
+    # - ["", "", "", "", "", "", "", "", "", ""]
+    # - {t: Boot, type: ghost}
+    # - Reset
+    # - Reset
+    # - {t: Boot, type: ghost}
+combos:
+  - "Esc"
+  - "Gui"
+  - "Gui"
+  - "Alt"
+  - "Alt"
+  - "Ctrl"
+  - "Ctrl"
+  - "Shift"
+  - "Shift"
+  - "Enter"
+  - "Backspace"
+  - "Delete"
+  - "Symbols"
+  - "Leader"
+  - "Numword"
+  - "Caseword"
+  - "snake_case"
+  - "camelCase"
+  - "PascalCase"
+  - "CONST_CASE"
+  - ""
+  - ""
+  - ""
+  - {p: [22, 23], k: "`", l: ["Combos"]}
+  - {p: [21, 22], k: "~", l: ["Combos"]}
+  - {p: [6, 7],   k: ";", l: ["Combos"]}
+  - {p: [11, 12, 13], k: "(", l: ["Combos"]}
+  - {p: [16, 17], k: ")", l: ["Combos"]}
+  - {p: [17, 18], k: "]", l: ["Combos"]}
+  - {p: [26, 27], k: "\\", l: ["Combos"]}
+  - {p: [27, 28], k: "|", l: ["Combos"]}
