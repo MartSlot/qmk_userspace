@@ -181,7 +181,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
-    uint8_t layer = get_highest_layer(layer_state | default_layer_state);
+    
     return false;
 }
 
