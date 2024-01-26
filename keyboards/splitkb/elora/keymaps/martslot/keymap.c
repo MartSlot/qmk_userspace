@@ -1,9 +1,9 @@
 #include QMK_KEYBOARD_H
 
+#include "keymap.h"
+#include "layers.h"
 #include "oneshot.h"
 #include "swapper.h"
-
-enum layers { LAYER_QWERTY = 0, LAYER_NAVIGATION, LAYER_SYMBOLS, LAYER_NUMBERS, LAYER_GAMING, LAYER_GAMING_EXTRA };
 
 enum keycodes {
     // Custom oneshot mod implementation with no timers.
@@ -108,20 +108,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 // clang-format on
 
-const key_override_t override_comma = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, KC_EXLM);
-const key_override_t override_dot   = ko_make_basic(MOD_MASK_SHIFT, KC_DOT, KC_QUES);
-
-const key_override_t **key_overrides = (const key_override_t *[]){&override_comma, &override_dot, NULL};
-
-const uint16_t PROGMEM combo_delete[]    = {KC_S, KC_F, COMBO_END};
-const uint16_t PROGMEM combo_backspace[] = {KC_J, KC_L, COMBO_END};
-const uint16_t PROGMEM combo_tab[]       = {KC_D, KC_F, COMBO_END};
-const uint16_t PROGMEM combo_shift_tab[] = {KC_S, KC_D, COMBO_END};
-const uint16_t PROGMEM combo_enter[]     = {KC_J, KC_K, COMBO_END};
-combo_t                key_combos[]      = {
-    COMBO(combo_delete, KC_DEL), COMBO(combo_backspace, KC_BSPC), COMBO(combo_tab, KC_TAB), COMBO(combo_shift_tab, S(KC_TAB)), COMBO(combo_enter, KC_ENT),
-};
-
 bool is_oneshot_cancel_key(uint16_t keycode) {
     switch (keycode) {
         case LA_SYMB:
@@ -149,7 +135,6 @@ bool is_oneshot_ignored_key(uint16_t keycode) {
 
 bool    sw_win_active  = false;
 bool    sw_lang_active = false;
-bool    leader_active  = false;
 uint8_t char_offset    = 0;
 
 oneshot_state os_shft_state = os_up_unqueued;
@@ -181,27 +166,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
-    
     return false;
-}
-
-void leader_start_user() {
-    leader_active = true;
-}
-
-void leader_end_user(void) {
-    leader_active = false;
-    if (leader_sequence_one_key(KC_AT) || leader_sequence_two_keys(KC_A, KC_T)) {
-        SEND_STRING("martslot@proton.me");
-    } else if (leader_sequence_two_keys(KC_M, KC_S)) {
-        SEND_STRING("Mart Slot");
-    } else if (leader_sequence_three_keys(KC_A, KC_D, KC_D)) {
-        SEND_STRING("Soeverein 78\n3817 HV\nAmersfoort");
-    } else if (leader_sequence_five_keys(KC_P, KC_H, KC_O, KC_N, KC_E)) {
-        SEND_STRING("+31630511860");
-    } else if (leader_sequence_four_keys(KC_C, KC_A, KC_P, KC_S)) {
-        SEND_STRING(SS_TAP(X_CAPS_LOCK));
-    }
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
@@ -215,163 +180,3 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
     return new_state;
 }
-
-#ifdef OLED_ENABLE
-void oled_print_oneshot_state(const char *name, oneshot_state state) {
-    switch (state) {
-        case os_up_unqueued:
-            oled_write_P(PSTR("    "), false);
-            break;
-        case os_up_queued:
-            oled_write_P(name, true);
-            break;
-        case os_down_unused:
-            oled_write_P(name, false);
-            break;
-        case os_down_used:
-            oled_write_P(name, false);
-            break;
-    }
-}
-
-bool oled_task_user(void) {
-    if (is_keyboard_master()) {
-        uint8_t layer = get_highest_layer(layer_state | default_layer_state);
-        oled_write_ln_P(PSTR("Layer:"), false);
-        switch (layer) {
-            case LAYER_QWERTY:
-                oled_write_ln_P(PSTR("> QWERTY"), false);
-                oled_write_ln_P(PSTR(""), false);
-                oled_write_ln_P(PSTR("Q W E R T"), false);
-                oled_write_ln_P(PSTR("A S D F G"), false);
-                oled_write_ln_P(PSTR("Z X C V B"), false);
-                oled_write_ln_P(PSTR("   Nav Spc"), false);
-                break;
-            case LAYER_NAVIGATION:
-                oled_write_P(PSTR("> Navigatn"), false);
-                oled_write_ln_P(PSTR(""), false);
-                oled_write_P(PSTR("SwSt\x10 \x11 AR"), false);
-                oled_write_P(PSTR("g a c s Re"), false);
-                oled_write_ln_P(PSTR("Z X C V Y"), false);
-                oled_write_ln_P(PSTR("   Nav Spc"), false);
-                break;
-            case LAYER_SYMBOLS:
-                oled_write_ln_P(PSTR("> Symbols"), false);
-                oled_write_ln_P(PSTR(""), false);
-                oled_write_ln_P(PSTR("' < > \" \x09"), false);
-                oled_write_ln_P(PSTR("! - + = #"), false);
-                oled_write_ln_P(PSTR("^ / * \\ $"), false);
-                oled_write_ln_P(PSTR("   Num Ent"), false);
-                break;
-            case LAYER_NUMBERS:
-                oled_write_ln_P(PSTR("> Numbers"), false);
-                oled_write_ln_P(PSTR(""), false);
-                oled_write_ln_P(PSTR("1 2 3 4 5"), false);
-                oled_write_P(PSTR("g a c sF11"), false);
-                oled_write_P(PSTR("F1F2F3F4F5"), false);
-                oled_write_ln_P(PSTR("   Num Ent"), false);
-                break;
-            case LAYER_GAMING:
-                oled_write_ln_P(PSTR("> Game"), false);
-                oled_write_ln_P(PSTR(""), false);
-                oled_write_ln_P(PSTR("e Q W E R"), false);
-                oled_write_ln_P(PSTR("s A S D G"), false);
-                oled_write_ln_P(PSTR("c Z X C V"), false);
-                oled_write_ln_P(PSTR("   Num Ent"), false);
-                break;
-            case LAYER_GAMING_EXTRA:
-                oled_write_ln_P(PSTR("> Game+"), false);
-                oled_write_ln_P(PSTR(""), false);
-                oled_write_ln_P(PSTR("1 2 3 4 5"), false);
-                oled_write_ln_P(PSTR("6 7 8 9 0"), false);
-                oled_write_ln_P(PSTR("T G B I M"), false);
-                oled_write_ln_P(PSTR("   Num Ent"), false);
-                break;
-        }
-
-        oled_write_ln_P(PSTR(""), false);
-        oled_write_ln_P(PSTR("OneShot:"), false);
-        oled_print_oneshot_state(PSTR("Shft"), os_shft_state);
-        oled_write_P(PSTR(" "), false);
-        oled_print_oneshot_state(PSTR("Ctrl"), os_ctrl_state);
-        oled_advance_page(true);
-        oled_print_oneshot_state(PSTR("Alt "), os_alt_state);
-        oled_write_P(PSTR(" "), false);
-        oled_print_oneshot_state(PSTR("Win "), os_win_state);
-        oled_advance_page(true);
-        oled_advance_page(true);
-
-        oled_write_P(PSTR("Lead: "), false);
-        if (leader_active) {
-            oled_write_ln_P(PSTR("On"), true);
-        } else {
-            oled_write_ln_P(PSTR("Off"), false);
-        }
-
-        /*oled_write_P(PSTR("Offset: "), false);
-        oled_write(get_u8_str(char_offset, ' '), false);
-        oled_advance_page(true);
-
-        for (int i = 0; i < 10; i++)
-        {
-            oled_write_char(char_offset + i, false);
-            oled_write_P(PSTR(" "), false);
-        }*/
-    } else {
-        uint8_t layer = get_highest_layer(layer_state | default_layer_state);
-        oled_write_ln_P(PSTR("Layer:"), false);
-        switch (layer) {
-            case LAYER_QWERTY:
-                oled_write_ln_P(PSTR("> QWERTY"), false);
-                oled_write_ln_P(PSTR(""), false);
-                oled_write_ln_P(PSTR("Y U I O P"), false);
-                oled_write_ln_P(PSTR("H J K L :"), false);
-                oled_write_ln_P(PSTR("N M , . '"), false);
-                oled_write_ln_P(PSTR("Sft Sym"), false);
-                break;
-            case LAYER_NAVIGATION:
-                oled_write_P(PSTR("> Navigatn"), false);
-                oled_write_ln_P(PSTR(""), false);
-                oled_write_ln_P(PSTR("\x10 Ho\x18 En\x09"), false);
-                oled_write_ln_P(PSTR("\x11 \x1B \x19 \x1A \x09"), false);
-                oled_write_ln_P(PSTR("RtPuPd\x09 \x09"), false);
-                oled_write_ln_P(PSTR("Bsp Num"), false);
-                break;
-            case LAYER_SYMBOLS:
-                oled_write_ln_P(PSTR("> Symbols"), false);
-                oled_write_ln_P(PSTR(""), false);
-                oled_write_ln_P(PSTR("` : [ ] %"), false);
-                oled_write_ln_P(PSTR("| _ ( ) ?"), false);
-                oled_write_ln_P(PSTR("~ & { } @"), false);
-                oled_write_ln_P(PSTR("Sft Sym"), false);
-                break;
-            case LAYER_NUMBERS:
-                oled_write_ln_P(PSTR("> Numbers"), false);
-                oled_write_ln_P(PSTR(""), false);
-                oled_write_ln_P(PSTR("6 7 8 9 0"), false);
-                oled_write_ln_P(PSTR("F2sc a g"), false);
-                oled_write_P(PSTR("F6F7F8F9F0"), false);
-                oled_write_ln_P(PSTR("Bsp Num"), false);
-                break;
-            case LAYER_GAMING:
-                oled_write_ln_P(PSTR("> Game"), false);
-                oled_write_ln_P(PSTR(""), false);
-                oled_write_ln_P(PSTR("Y U I O P"), false);
-                oled_write_ln_P(PSTR("H J K L :"), false);
-                oled_write_ln_P(PSTR("N M , . '"), false);
-                oled_write_ln_P(PSTR("Sft Sym"), false);
-                break;
-            case LAYER_GAMING_EXTRA:
-                oled_write_ln_P(PSTR("> Game+"), false);
-                oled_write_ln_P(PSTR(""), false);
-                oled_write_ln_P(PSTR("\x09 \x09 \x09 \x09 \x09"), false);
-                oled_write_ln_P(PSTR("\x09 \x09 \x09 \x09 \x09"), false);
-                oled_write_ln_P(PSTR("\x09 \x09 \x09 \x09 \x09"), false);
-                oled_write_ln_P(PSTR("Sft Exit"), false);
-                break;
-        }
-    }
-
-    return false;
-}
-#endif

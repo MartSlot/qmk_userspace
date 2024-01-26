@@ -41,5 +41,9 @@ KEY_OVERRIDE_ENABLE = yes
 LEADER_ENABLE = yes
 REPEAT_KEY_ENABLE = yes
 
+INTROSPECTION_KEYMAP_C = combos.c
+SRC += leader.c
+SRC += oled.c
 SRC += oneshot.c
+SRC += overrides.c
 SRC += swapper.c

@@ -1,5 +1,4 @@
 #pragma once
-
 #include QMK_KEYBOARD_H
 
 // Represents the four states a oneshot key can be in
