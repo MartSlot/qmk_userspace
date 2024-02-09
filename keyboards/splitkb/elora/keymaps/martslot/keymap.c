@@ -34,9 +34,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [LAYER_NAVIGATION] = LAYOUT(
       __NOP__, __NOP__, __NOP__, __NOP__, __NOP__, __NOP__,          __NOP__, __NOP__,          __NOP__, __NOP__, __NOP__, __NOP__, __NOP__, KC_VOLU,
-      __NOP__, KC_ESC,  __NOP__, __NOP__, SW_WIN,  __NOP__,          __NOP__, __NOP__,          KC_DEL,  KC_HOME, KC_UP,   KC_END,  __NOP__, KC_VOLD,
+      __NOP__, KC_ESC,  __NOP__, __NOP__, SW_WIN,  __NOP__,          __NOP__, __NOP__,          KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_PGDN, KC_VOLD,
       __NOP__, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, __NOP__,          __NOP__, __NOP__,          QK_LEAD, KC_LEFT, KC_DOWN, KC_RGHT, __NOP__, KC_MUTE,
-      __NOP__, __NOP__, __NOP__, __NOP__, SW_TAB,  __NOP__, KC_BSPC, KC_ENT,  __NOP__, __NOP__, KC_ENT,  KC_PGDN, KC_PGUP, __NOP__, __NOP__, KC_MPLY,
+      __NOP__, __NOP__, __NOP__, __NOP__, SW_TAB,  __NOP__, KC_BSPC, KC_ENT,  __NOP__, __NOP__, __NOP__, KC_ENT,  KC_BSPC, KC_DEL,  __NOP__, KC_MPLY,
                                  LA_GAME, __NOP__, __NOP__, _______, _______, _______, _______, __NOP__, __NOP__, __NOP__
     ),
 
