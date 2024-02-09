@@ -17,12 +17,17 @@
 #pragma once
 
 // Myriad boilerplate
-#define MYRIAD_ENABLE
+// #define MYRIAD_ENABLE
 
 // Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed
 #define DEBOUNCE 5
 
 // Above is default settings
+
+#define PERMISSIVE_HOLD_PER_KEY
+#define TAPPING_TERM_PER_KEY
+#define TAPPING_TERM 200
+#define QUICK_TAP_TERM 0
 
 #undef RGBLIGHT_DEFAULT_ON
 #define RGBLIGHT_DEFAULT_ON false

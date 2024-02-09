@@ -56,7 +56,7 @@ layers:
   NumWord:
     - ["", "", "", "", "", "", "", "", "", ""]
     - [{t: "1", h: "gui"}, {t: "2", h: "alt"}, {t: "3", h: "ctrl"}, {t: "4", h: "shift"}, "5", "6", {t: "7", h: "shift"}, {t: "8", h: "ctrl"}, {t: "9", h: "alt"}, {t: "0", h: "gui"}]
-    - ["-", "/", "*", "+", "", "", "", "", "", ""]
+    - ["-", "/", "*", "+", "", "", "", ",", ".", ""]
     - {h: Nav,  t: Space, type: ghost}
     - {h: SHRT,   t: "SHRT (OS)", type: ghost}
     - ""
@@ -100,10 +100,15 @@ combos:
   #- "camelCase"
   #- "PascalCase"
   #- "CONST_CASE"
-  - {p: [1, 2, 3], k: "Tab", l: ["Combos"], align: top}
-  - {p: [6, 7, 8], k: "Delete", l: ["Combos"], align: top}
+  - {p: [10, 11, 12], k: "Delete", l: ["Combos"], align: bottom}
   - {p: [11, 12, 13], k: "Backspace", l: ["Combos"], align: top}
   - {p: [16, 17, 18], k: "Enter", l: ["Combos"], align: top}
-  - {p: [30, 33], k: "NumWord", l: ["Combos"], align: top}
+  - {p: [17, 18, 19], k: "Tab", l: ["Combos"], align: bottom}
+
+  #- {p: [1, 2, 3], k: "Tab", l: ["Combos"], align: top}
+  #- {p: [6, 7, 8], k: "Delete", l: ["Combos"], align: top}
+  #- {p: [11, 12, 13], k: "Backspace", l: ["Combos"], align: top}
+  #- {p: [16, 17, 18], k: "Enter", l: ["Combos"], align: top}
+  #- {p: [30, 33], k: "NumWord", l: ["Combos"], align: top}
 draw_config:
   n_columns: 1
