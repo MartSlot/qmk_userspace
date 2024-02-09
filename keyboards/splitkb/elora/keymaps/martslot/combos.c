@@ -4,17 +4,43 @@
 enum combos {
     COMBO_DELETE,
     COMBO_BACKSPACE,
-    COMBO_ENTER,
     COMBO_TAB,
+    COMBO_SHIFT_TAB,
+    COMBO_ENTER,
 };
 
-const uint16_t PROGMEM combo_delete[]    = {MT_GA, MT_AS, MT_CD, COMBO_END};
-const uint16_t PROGMEM combo_backspace[] = {MT_AS, MT_CD, MT_SF, COMBO_END};
-const uint16_t PROGMEM combo_enter[]     = {MT_SJ, MT_CK, MT_AL, COMBO_END};
-const uint16_t PROGMEM combo_tab[]       = {MT_CK, MT_AL, MT_GS, COMBO_END};
-combo_t                key_combos[]      = {
+const uint16_t PROGMEM combo_delete[]    = {KC_L, KC_SCLN, COMBO_END};
+const uint16_t PROGMEM combo_backspace[] = {KC_K, KC_L, COMBO_END};
+const uint16_t PROGMEM combo_tab[]       = {KC_D, KC_F, COMBO_END};
+const uint16_t PROGMEM combo_shift_tab[] = {KC_S, KC_D, COMBO_END};
+const uint16_t PROGMEM combo_enter[]     = {KC_J, KC_K, COMBO_END};
+
+// clang-format off
+combo_t key_combos[] = {
     [COMBO_DELETE]    = COMBO(combo_delete, KC_DEL),
     [COMBO_BACKSPACE] = COMBO(combo_backspace, KC_BSPC),
-    [COMBO_ENTER]     = COMBO(combo_tab, KC_TAB),
-    [COMBO_TAB]       = COMBO(combo_enter, KC_ENT),
+    [COMBO_TAB]       = COMBO(combo_tab, KC_TAB),
+    [COMBO_SHIFT_TAB] = COMBO(combo_shift_tab, S(KC_TAB)),
+    [COMBO_ENTER]     = COMBO(combo_enter, KC_ENT),
 };
+// clang-format on
+
+bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
+    if (layer_state_is(LAYER_QWERTY)) {
+        return false;
+    }
+
+    switch (combo_index) {
+        case COMBO_DELETE:
+        case COMBO_BACKSPACE:
+        case COMBO_ENTER:
+            return layer_state_is(LAYER_NAVIGATION);
+        case COMBO_TAB:
+        case COMBO_SHIFT_TAB:
+            return layer_state_is(LAYER_SYMBOLS);
+        default:
+            break;
+    }
+
+    return true;
+}

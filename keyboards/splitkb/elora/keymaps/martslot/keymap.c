@@ -16,6 +16,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                  __NOP__, KC_LGUI, __NOP__, LT_NSPC, LA_SHRT, LA_FUNC, LT_SREP, __NOP__, KC_LEFT, KC_RGHT
     ),
 
+    [LAYER_COMBOS] = LAYOUT(
+      KC_ESC,  __NOP__, __NOP__, __NOP__, __NOP__, __NOP__,          __NOP__, __NOP__,          __NOP__, __NOP__, __NOP__, __NOP__, __NOP__, __NOP__,
+      __NOP__, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,             __NOP__, __NOP__,          KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    __NOP__,
+      __NOP__, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,             __NOP__, __NOP__,          KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, __NOP__,
+      __NOP__, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    __NOP__, __NOP__, __NOP__, __NOP__, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_QUOT, __NOP__,
+                                 __NOP__, KC_LGUI, __NOP__, __NOP__, __NOP__, __NOP__, __NOP__, __NOP__, KC_LEFT, KC_RGHT
+    ),
+
     [LAYER_SHORTCUTS] = LAYOUT(
       __NOP__, __NOP__, __NOP__, __NOP__, __NOP__, __NOP__,          __NOP__, __NOP__,          __NOP__, __NOP__, __NOP__, __NOP__, __NOP__, __NOP__,
       __NOP__, C(KC_Q), C(KC_W), C(KC_E), C(KC_R), C(KC_T),          __NOP__, __NOP__,          __NOP__, __NOP__, __NOP__, __NOP__, __NOP__, __NOP__,
