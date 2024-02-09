@@ -26,21 +26,5 @@ combo_t key_combos[] = {
 // clang-format on
 
 bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
-    if (layer_state_is(LAYER_QWERTY)) {
-        return false;
-    }
-
-    switch (combo_index) {
-        case COMBO_DELETE:
-        case COMBO_BACKSPACE:
-        case COMBO_ENTER:
-            return layer_state_is(LAYER_NAVIGATION);
-        case COMBO_TAB:
-        case COMBO_SHIFT_TAB:
-            return layer_state_is(LAYER_SYMBOLS);
-        default:
-            break;
-    }
-
     return true;
 }
