@@ -136,6 +136,31 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     update_oneshot(&os_alt_state, KC_LALT, OS_ALT, keycode, record);
     update_oneshot(&os_win_state, KC_LGUI, OS_GUI, keycode, record);
 
+    switch (keycode) {
+        case LT_SREP:
+            if (record->tap.count) {
+                repeat_key_invoke(&record->event);
+                return false; // ignore further processing of key
+            }
+            break;
+        default:
+            break;
+    }
+
+    return true;
+}
+
+bool remember_last_key_user(uint16_t keycode, keyrecord_t* record,
+                            uint8_t* remembered_mods) {
+    switch (keycode) {
+        case KC_UP:
+        case KC_DOWN:
+        case KC_LEFT:
+        case KC_RIGHT:
+        case LT_SREP:
+            return false;
+    }
+
     return true;
 }
 

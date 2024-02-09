@@ -54,8 +54,8 @@ enum keycodes {
 #define MT_AF9 HOME_ROW_7(KC_F9)
 #define MT_GF10 HOME_ROW_8(KC_F10)
 
-#define LT_NSPC LT(LAYER_NAVIGATION, KC_SPACE)
-#define LT_SREP LT(LAYER_SYMBOLS, QK_REPEAT_KEY)
+#define UC_REPEAT_KEY_ALIAS KC_F13
+
 
 #define UC_UNDO C(KC_Z)
 #define UC_CUT C(KC_X)
@@ -65,6 +65,9 @@ enum keycodes {
 
 #define UC_NTAB C(KC_TAB)
 #define UC_PTAB C(S(KC_TAB))
+
+#define LT_NSPC LT(LAYER_NAVIGATION, KC_SPACE)
+#define LT_SREP LT(LAYER_SYMBOLS, UC_REPEAT_KEY_ALIAS)
 
 #define LA_QWER DF(LAYER_QWERTY)
 #define LA_SHRT MO(LAYER_SHORTCUTS)
