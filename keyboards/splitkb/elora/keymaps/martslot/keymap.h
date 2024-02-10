@@ -8,8 +8,10 @@ enum keycodes {
     OS_ALT,
     OS_GUI,
 
-    SW_WIN,
-    SW_TAB,
+    SW_NWIN,
+    SW_PWIN,
+    SW_NTAB,
+    SW_PTAB,
 };
 
 #define __NOP__ KC_NO
@@ -55,7 +57,6 @@ enum keycodes {
 #define MT_GF10 HOME_ROW_8(KC_F10)
 
 #define UC_REPEAT_KEY_ALIAS KC_F13
-
 
 #define UC_UNDO C(KC_Z)
 #define UC_CUT C(KC_X)
