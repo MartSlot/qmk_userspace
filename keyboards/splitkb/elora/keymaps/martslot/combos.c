@@ -28,3 +28,13 @@ combo_t key_combos[] = {
 bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
     return true;
 }
+
+bool get_combo_must_hold(uint16_t index, combo_t *combo) {
+    // For now, all combos are tap only
+    return false;
+}
+
+bool get_combo_must_tap(uint16_t index, combo_t *combo) {
+    // For now, all combos are tap only
+    return true;
+}
