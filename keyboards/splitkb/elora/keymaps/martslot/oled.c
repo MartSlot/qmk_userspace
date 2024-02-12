@@ -1,26 +1,8 @@
 #include "keymap.h"
 #include "layers.h"
 #include "leader.h"
-#include "oneshot.h"
 
 #ifdef OLED_ENABLE
-void oled_print_oneshot_state(const char *name, oneshot_state state) {
-    switch (state) {
-        case os_up_unqueued:
-            oled_write_P(PSTR("    "), false);
-            break;
-        case os_up_queued:
-            oled_write_P(name, true);
-            break;
-        case os_down_unused:
-            oled_write_P(name, false);
-            break;
-        case os_down_used:
-            oled_write_P(name, false);
-            break;
-    }
-}
-
 bool oled_task_user(void) {
     if (is_keyboard_master()) {
         uint8_t layer = get_highest_layer(layer_state | default_layer_state);
@@ -76,15 +58,6 @@ bool oled_task_user(void) {
                 break;
         }
 
-        oled_write_ln_P(PSTR(""), false);
-        oled_write_ln_P(PSTR("OneShot:"), false);
-        oled_print_oneshot_state(PSTR("Shft"), os_shft_state);
-        oled_write_P(PSTR(" "), false);
-        oled_print_oneshot_state(PSTR("Ctrl"), os_ctrl_state);
-        oled_advance_page(true);
-        oled_print_oneshot_state(PSTR("Alt "), os_alt_state);
-        oled_write_P(PSTR(" "), false);
-        oled_print_oneshot_state(PSTR("Win "), os_win_state);
         oled_advance_page(true);
         oled_advance_page(true);
 

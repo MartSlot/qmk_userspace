@@ -2,7 +2,6 @@
 
 #include "keymap.h"
 #include "layers.h"
-#include "oneshot.h"
 #include "swapper.h"
 
 // clang-format off
@@ -27,7 +26,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [LAYER_SHORTCUTS] = LAYOUT(
       __NOP__, __NOP__, __NOP__, __NOP__, __NOP__, __NOP__,          __NOP__, __NOP__,          __NOP__, __NOP__, __NOP__, __NOP__, __NOP__, __NOP__,
       __NOP__, C(KC_Q), C(KC_W), C(KC_E), C(KC_R), C(KC_T),          __NOP__, __NOP__,          __NOP__, __NOP__, __NOP__, __NOP__, __NOP__, __NOP__,
-      __NOP__, C(KC_A), C(KC_S), C(KC_D), C(KC_F), C(KC_G),          __NOP__, __NOP__,          __NOP__, OS_SHFT, OS_CTRL, OS_ALT,  OS_GUI,  __NOP__,
+      __NOP__, C(KC_A), C(KC_S), C(KC_D), C(KC_F), C(KC_G),          __NOP__, __NOP__,          __NOP__, __NOP__, __NOP__, __NOP__, __NOP__, __NOP__,
       __NOP__, C(KC_Z), C(KC_X), C(KC_C), C(KC_V), C(KC_Y), KC_DEL , KC_ENT,  __NOP__, __NOP__, __NOP__, __NOP__, __NOP__, __NOP__, __NOP__, __NOP__,
                                  __NOP__, KC_LGUI, __NOP__, _______, _______, QK_AREP, _______, __NOP__, __NOP__, __NOP__
     ),
@@ -83,31 +82,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 // clang-format on
 
-bool is_oneshot_cancel_key(uint16_t keycode) {
-    switch (keycode) {
-        case LA_SYMB:
-        case LA_NAVI:
-            return true;
-        default:
-            return false;
-    }
-}
-
-bool is_oneshot_ignored_key(uint16_t keycode) {
-    switch (keycode) {
-        case LA_SYMB:
-        case LA_NAVI:
-        case KC_LSFT:
-        case OS_SHFT:
-        case OS_CTRL:
-        case OS_ALT:
-        case OS_GUI:
-            return true;
-        default:
-            return false;
-    }
-}
-
 bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LT(1, KC_BSPC):
@@ -119,18 +93,8 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     }
 }
 
-oneshot_state os_shft_state = os_up_unqueued;
-oneshot_state os_ctrl_state = os_up_unqueued;
-oneshot_state os_alt_state  = os_up_unqueued;
-oneshot_state os_win_state  = os_up_unqueued;
-
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     process_record_swapper(keycode, record);
-
-    update_oneshot(&os_shft_state, KC_LSFT, OS_SHFT, keycode, record);
-    update_oneshot(&os_ctrl_state, KC_LCTL, OS_CTRL, keycode, record);
-    update_oneshot(&os_alt_state, KC_LALT, OS_ALT, keycode, record);
-    update_oneshot(&os_win_state, KC_LGUI, OS_GUI, keycode, record);
 
     switch (keycode) {
         case LT_SREP:

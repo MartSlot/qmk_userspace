@@ -1,13 +1,6 @@
 #pragma once
-#include "oneshot.h"
 
 enum keycodes {
-    // Custom oneshot mod implementation with no timers.
-    OS_SHFT = SAFE_RANGE,
-    OS_CTRL,
-    OS_ALT,
-    OS_GUI,
-
     SW_NWIN,
     SW_PWIN,
     SW_NTAB,
@@ -78,8 +71,3 @@ enum keycodes {
 
 #define LA_GAME DF(LAYER_GAMING)
 #define LA_GAMX MO(LAYER_GAMING_EXTRA)
-
-extern oneshot_state os_shft_state;
-extern oneshot_state os_ctrl_state;
-extern oneshot_state os_alt_state;
-extern oneshot_state os_win_state;
