@@ -8,10 +8,10 @@
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [LAYER_QWERTY] = LAYOUT(
-      KC_ESC,  __NOP__, __NOP__, __NOP__, __NOP__, __NOP__,          __NOP__, __NOP__,          __NOP__, __NOP__, __NOP__, __NOP__, __NOP__, __NOP__,
-      __NOP__, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,             __NOP__, __NOP__,          KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    __NOP__,
-      KC_LCTL, MT_GA,   MT_AS,   MT_CD,   MT_SF,   KC_G,             __NOP__, __NOP__,          KC_H,    MT_SJ,   MT_CK,   MT_AL,   MT_GS,   __NOP__,
-      __NOP__, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_DEL,  KC_ENT,  __NOP__, __NOP__, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_QUOT, __NOP__,
+      KC_ESC,  __NOP__, __NOP__, __NOP__, __NOP__, __NOP__,          __NOP__, __NOP__,          __NOP__, __NOP__, __NOP__, __NOP__, __NOP__, KC_VOLU,
+      __NOP__, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,             __NOP__, __NOP__,          KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_VOLD,
+      KC_LCTL, MT_GA,   MT_AS,   MT_CD,   MT_SF,   KC_G,             __NOP__, __NOP__,          KC_H,    MT_SJ,   MT_CK,   MT_AL,   MT_GS,   KC_MUTE,
+      __NOP__, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_DEL,  KC_ENT,  __NOP__, __NOP__, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_QUOT, KC_MPLY,
                                  __NOP__, KC_LGUI, __NOP__, LA_SHRT, LT_NSPC, LT_SREP, LA_FUNC, __NOP__, KC_LEFT, KC_RGHT
     ),
 
@@ -35,7 +35,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       __NOP__, __NOP__, __NOP__, __NOP__, __NOP__, __NOP__,          __NOP__, __NOP__,          __NOP__, __NOP__, __NOP__, __NOP__, __NOP__, KC_VOLU,
       __NOP__, KC_ESC,  __NOP__, SW_PWIN, SW_NWIN, __NOP__,          __NOP__, __NOP__,          KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_PGDN, KC_VOLD,
       __NOP__, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, __NOP__,          __NOP__, __NOP__,          QK_LEAD, KC_LEFT, KC_DOWN, KC_RGHT, __NOP__, KC_MUTE,
-      __NOP__, __NOP__, __NOP__, SW_PTAB, SW_NTAB,  __NOP__, KC_BSPC, KC_ENT,  __NOP__, __NOP__, __NOP__, KC_ENT,  KC_BSPC, KC_DEL,  __NOP__, KC_MPLY,
+      __NOP__, __NOP__, __NOP__, SW_PTAB, SW_NTAB, __NOP__, KC_BSPC, KC_ENT,  __NOP__, __NOP__, __NOP__, KC_ENT,  KC_BSPC, KC_DEL,  __NOP__, KC_MPLY,
                                  LA_GAME, __NOP__, __NOP__, _______, _______, _______, _______, __NOP__, __NOP__, __NOP__
     ),
 
