@@ -25,16 +25,23 @@ combo_t key_combos[] = {
 };
 // clang-format on
 
+uint16_t last_combo_index = -1;
+uint16_t last_combo_time  = 0;
+
+void process_combo_event_user(uint16_t combo_index, bool pressed) {
+    if (pressed) {
+        last_combo_time  = timer_read();
+        last_combo_index = combo_index;
+    }
+}
+
 bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
-bool get_combo_must_hold(uint16_t index, combo_t *combo) {
-    // For now, all combos are tap only
-    return false;
-}
-
-bool get_combo_must_tap(uint16_t index, combo_t *combo) {
-    // For now, all combos are tap only
+bool get_combo_must_tap(uint16_t combo_index, combo_t *combo) {
+    if (combo_index == last_combo_index && timer_elapsed(last_combo_time) < TAPPING_TERM) {
+        return false;
+    }
     return true;
 }
