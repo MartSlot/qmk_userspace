@@ -27,7 +27,8 @@ void update_swapper(uint16_t keycode, const keyrecord_t *record, bool *active, u
     }
 }
 
-void process_record_swapper(uint16_t keycode, keyrecord_t *record) {
+bool process_record_swapper(uint16_t keycode, keyrecord_t *record) {
     update_swapper(keycode, record, &swap_win_active, SW_NWIN, SW_PWIN, KC_LALT, KC_LSFT);
     update_swapper(keycode, record, &swap_tab_active, SW_NTAB, SW_PTAB, KC_LCTL, KC_LSFT);
+    return true;
 }

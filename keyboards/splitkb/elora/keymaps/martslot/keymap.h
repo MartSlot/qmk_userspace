@@ -1,10 +1,20 @@
 #pragma once
+#include QMK_KEYBOARD_H
 
 enum keycodes {
-    SW_NWIN,
+    SW_NWIN = SAFE_RANGE,
     SW_PWIN,
     SW_NTAB,
     SW_PTAB,
+
+    CO_DELETE,
+    CO_BACKSPACE,
+    CO_TAB,
+    CO_SHIFT_TAB,
+    CO_ENTER,
+
+    UC_NUMWORD,
+    UC_CAPSWORD,
 };
 
 #define __NOP__ KC_NO
@@ -50,15 +60,6 @@ enum keycodes {
 #define MT_GF10 HOME_ROW_8(KC_F10)
 
 #define UC_REPEAT_KEY_ALIAS KC_F13
-
-#define UC_UNDO C(KC_Z)
-#define UC_CUT C(KC_X)
-#define UC_COPY C(KC_C)
-#define UC_PSTE C(KC_V)
-#define UC_REDO C(KC_Y)
-
-#define UC_NTAB C(KC_TAB)
-#define UC_PTAB C(S(KC_TAB))
 
 #define LT_NSPC LT(LAYER_NAVIGATION, KC_SPACE)
 #define LT_SREP LT(LAYER_SYMBOLS, UC_REPEAT_KEY_ALIAS)

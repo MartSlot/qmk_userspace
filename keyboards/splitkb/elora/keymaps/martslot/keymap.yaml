@@ -100,18 +100,12 @@ combos:
   #- "camelCase"
   #- "PascalCase"
   #- "CONST_CASE"
-  - {p: [7, 8], k: "Delete", l: ["Combos"], align: bottom}
-  - {p: [6, 7], k: "Backspace", l: ["Combos"], align: top}
   - {p: [16, 17], k: "Enter", l: ["Combos"], align: top}
   - {p: [17, 18], k: "Backspace", l: ["Combos"], align: top}
   - {p: [18, 19], k: "Delete", l: ["Combos"], align: top}
   - {p: [12, 13], k: "Tab", l: ["Combos"], align: bottom}
   - {p: [11, 12], k: "Shift Tab", l: ["Combos"], align: bottom}
-
-  #- {p: [1, 2, 3], k: "Tab", l: ["Combos"], align: top}
-  #- {p: [6, 7, 8], k: "Delete", l: ["Combos"], align: top}
-  #- {p: [11, 12, 13], k: "Backspace", l: ["Combos"], align: top}
-  #- {p: [16, 17, 18], k: "Enter", l: ["Combos"], align: top}
-  #- {p: [30, 33], k: "NumWord", l: ["Combos"], align: top}
+  - {p: [31, 32], k: "CaseWord", l: ["Combos"], align: bottom}
+  - {p: [31, 32], k: "NumWord", l: ["Combos"], align: bottom}
 draw_config:
   n_columns: 1
