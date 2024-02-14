@@ -1,5 +1,6 @@
 #pragma once
 #include QMK_KEYBOARD_H
+#include "layers.h"
 
 enum keycodes {
     SW_NWIN = SAFE_RANGE,

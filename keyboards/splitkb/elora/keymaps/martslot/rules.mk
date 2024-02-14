@@ -45,4 +45,5 @@ INTROSPECTION_KEYMAP_C = combos.c
 SRC += leader.c
 SRC += oled.c
 SRC += overrides.c
+SRC += repeat.c
 SRC += swapper.c
