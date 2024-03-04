@@ -1,5 +1,6 @@
 #pragma once
 #include QMK_KEYBOARD_H
+#include "keycodes.h"
 #include "layers.h"
 
 enum keycodes {
@@ -14,8 +15,12 @@ enum keycodes {
     CO_SHIFT_TAB,
     CO_ENTER,
 
-    UC_NUMWORD,
-    UC_CAPSWORD,
+    UC_CAPS_WORD,
+    UC_SNAKE_WORD,
+    UC_SCREAMING_SNAKE_WORD,
+    UC_PASCAL_WORD,
+    UC_CAMEL_WORD,
+    UC_NUM_WORD
 };
 
 #define __NOP__ KC_NO
@@ -73,3 +78,5 @@ enum keycodes {
 
 #define LA_GAME DF(LAYER_GAMING)
 #define LA_GAMX MO(LAYER_GAMING_EXTRA)
+
+uint16_t get_tap_keycode_for_key(uint16_t keycode);

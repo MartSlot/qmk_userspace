@@ -1,6 +1,7 @@
 #include "keymap.h"
 #include "layers.h"
 #include "leader.h"
+#include "casemode.h"
 
 #ifdef OLED_ENABLE
 bool oled_task_user(void) {
@@ -82,6 +83,37 @@ bool oled_task_user(void) {
             oled_write_ln_P(PSTR("On"), true);
         } else {
             oled_write_ln_P(PSTR("Off"), false);
+        }
+
+        oled_write_P(PSTR("Case Mode:"), false);
+        switch (get_current_casemode()) {
+            case CM_DISABLED:
+                oled_write_ln_P(PSTR("Disabled"), false);
+                break;
+            case CM_CAPS_WORD:
+                oled_write_ln_P(PSTR("Caps Word"), true);
+                break;
+            case CM_CAPS_LOCK:
+                oled_write_ln_P(PSTR("Caps Lock"), true);
+                break;
+            case CM_SNAKE_WORD:
+                oled_write_ln_P(PSTR("Snake"), true);
+                break;
+            case CM_SCREAMING_SNAKE_WORD:
+                oled_write_ln_P(PSTR("Scr.Snake"), true);
+                break;
+            case CM_PASCAL_WORD:
+                oled_write_ln_P(PSTR("Pascal"), true);
+                break;
+            case CM_CAMEL_WORD:
+                oled_write_ln_P(PSTR("Camel"), true);
+                break;
+            case CM_NUM_WORD:
+                oled_write_ln_P(PSTR("Num Case"), true);
+                break;
+            case CM_NUM_LOCK:
+                oled_write_ln_P(PSTR("Num Lock"), true);
+                break;
         }
 
         /*oled_write_P(PSTR("Offset: "), false);

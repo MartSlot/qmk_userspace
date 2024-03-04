@@ -1,21 +1,15 @@
 #include "combos.h"
-#include "keymap.h"
+#include "keycodes.h"
 
-enum combos {
-    COMBO_DELETE,
-    COMBO_BACKSPACE,
-    COMBO_TAB,
-    COMBO_SHIFT_TAB,
-    COMBO_ENTER,
-    COMBO_NUMWORD,
-};
+enum combos { COMBO_DELETE, COMBO_BACKSPACE, COMBO_TAB, COMBO_SHIFT_TAB, COMBO_ENTER, COMBO_CAPS_WORD, COMBO_NUM_WORD };
 
 const uint16_t PROGMEM combo_delete[]    = {KC_L, KC_SCLN, COMBO_END};
 const uint16_t PROGMEM combo_backspace[] = {KC_K, KC_L, COMBO_END};
 const uint16_t PROGMEM combo_tab[]       = {KC_D, KC_F, COMBO_END};
 const uint16_t PROGMEM combo_shift_tab[] = {KC_S, KC_D, COMBO_END};
 const uint16_t PROGMEM combo_enter[]     = {KC_J, KC_K, COMBO_END};
-const uint16_t PROGMEM combo_numword[]   = {KC_2, KC_3, COMBO_END};
+const uint16_t PROGMEM combo_caps_word[] = {KC_F, KC_J, COMBO_END};
+const uint16_t PROGMEM combo_num_word[]  = {KC_2, KC_3, COMBO_END};
 
 // clang-format off
 combo_t key_combos[] = {
@@ -24,7 +18,8 @@ combo_t key_combos[] = {
     [COMBO_TAB]       = COMBO(combo_tab, CO_TAB),
     [COMBO_SHIFT_TAB] = COMBO(combo_shift_tab, S(CO_SHIFT_TAB)),
     [COMBO_ENTER]     = COMBO(combo_enter, CO_ENTER),
-    [COMBO_NUMWORD]   = COMBO(combo_numword, UC_NUMWORD),
+    [COMBO_CAPS_WORD]   = COMBO(combo_caps_word, UC_CAPS_WORD),
+    [COMBO_NUM_WORD]   = COMBO(combo_num_word, UC_NUM_WORD),
 };
 // clang-format on
 
@@ -36,6 +31,10 @@ bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode
 }
 
 bool get_combo_must_tap(uint16_t combo_index, combo_t *combo) {
+    switch (combo_index) {
+        case COMBO_NUM_WORD:
+            return true;
+    }
     if (combo->keycode == last_keycode && timer_elapsed(last_event_time) < 1000) {
         return false;
     }

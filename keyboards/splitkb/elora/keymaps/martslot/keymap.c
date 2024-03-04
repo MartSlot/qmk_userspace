@@ -1,10 +1,11 @@
-#include QMK_KEYBOARD_H
-
 #include "keymap.h"
-#include "layers.h"
-#include "swapper.h"
+
+#include "casemode.h"
 #include "combos.h"
+#include "keycodes.h"
+#include "layers.h"
 #include "repeat.h"
+#include "swapper.h"
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -95,6 +96,9 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (!process_record_casemode(keycode, record)) {
+        return false;
+    }
     if (!process_record_swapper(keycode, record)) {
         return false;
     }
@@ -112,11 +116,21 @@ bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
     return false;
 }
 
-layer_state_t default_layer_state_set_user(layer_state_t state) {
-    default_layer_state_set_combo(state);
-    return state;
-}
-
-layer_state_t layer_state_set_user(layer_state_t state) {
-    return update_tri_layer_state(state, LAYER_NAVIGATION, LAYER_SYMBOLS, LAYER_NUMBERS);
+uint16_t get_tap_keycode_for_key(uint16_t keycode) {
+    switch (keycode) {
+        case QK_MOD_TAP ... QK_MOD_TAP_MAX:
+        case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
+            return keycode &= 0xff;
+        case CO_DELETE:
+            return KC_DELETE;
+        case CO_BACKSPACE:
+            return KC_BACKSPACE;
+        case CO_TAB:
+            return KC_TAB;
+        case CO_SHIFT_TAB:
+            return LSFT(KC_TAB);
+        case CO_ENTER:
+            return KC_ENTER;
+    }
+    return keycode;
 }
