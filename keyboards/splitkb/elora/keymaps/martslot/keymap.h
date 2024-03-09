@@ -18,7 +18,6 @@ enum keycodes {
     UC_CAPS_WORD,
     UC_SNAKE_WORD,
     UC_SCREAMING_SNAKE_WORD,
-    UC_PASCAL_WORD,
     UC_CAMEL_WORD,
     UC_NUM_WORD
 };

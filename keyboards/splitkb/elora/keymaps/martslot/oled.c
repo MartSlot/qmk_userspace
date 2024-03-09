@@ -102,9 +102,6 @@ bool oled_task_user(void) {
             case CM_SCREAMING_SNAKE_WORD:
                 oled_write_ln_P(PSTR("Scr.Snake"), true);
                 break;
-            case CM_PASCAL_WORD:
-                oled_write_ln_P(PSTR("Pascal"), true);
-                break;
             case CM_CAMEL_WORD:
                 oled_write_ln_P(PSTR("Camel"), true);
                 break;

@@ -11,7 +11,6 @@ bool          all_letters_are_upper  = false;
 void disable_casemode() {
     current_mode = CM_DISABLED;
     unlock_number_layer();
-    layer_move(LAYER_QWERTY);
 }
 
 void begin_casemode(casemode_type casemode) {
@@ -19,10 +18,11 @@ void begin_casemode(casemode_type casemode) {
     if (casemode == CM_DISABLED) {
         return;
     }
-    next_space_is_exit     = (casemode != CM_SNAKE_WORD && casemode != CM_SCREAMING_SNAKE_WORD);
+
+    next_space_is_exit     = false;
     tap_before_next_letter = KC_NO;
     all_letters_are_upper  = (casemode == CM_CAPS_WORD || casemode == CM_CAPS_LOCK || casemode == CM_SCREAMING_SNAKE_WORD);
-    next_letter_is_upper   = (casemode == CM_PASCAL_WORD);
+    next_letter_is_upper   = false;
     if (casemode == CM_NUM_WORD || casemode == CM_NUM_LOCK) {
         lock_number_layer();
     }
@@ -57,9 +57,6 @@ bool start_casemode_and_return_if_started(uint16_t keycode, keyrecord_t *record)
             return true;
         case UC_SCREAMING_SNAKE_WORD:
             begin_casemode(CM_SCREAMING_SNAKE_WORD);
-            return true;
-        case UC_PASCAL_WORD:
-            begin_casemode(CM_PASCAL_WORD);
             return true;
         case UC_CAMEL_WORD:
             begin_casemode(CM_CAMEL_WORD);
@@ -113,34 +110,32 @@ bool process_record_casemode(uint16_t keycode, keyrecord_t *record) {
     if (tap_keycode == KC_SPC) {
         if (next_space_is_exit) {
             disable_casemode();
-            return false;
+            return true;
         }
-        next_space_is_exit = true;
 
         switch (current_mode) {
             case CM_CAPS_WORD:
             case CM_NUM_WORD:
-                tap_code16(KC_SPC);
                 disable_casemode();
-                break;
+                return true;
 
             case CM_SNAKE_WORD:
             case CM_SCREAMING_SNAKE_WORD:
                 tap_before_next_letter = KC_UNDERSCORE;
-                break;
+                next_space_is_exit     = true;
+                return false;
 
-            case CM_PASCAL_WORD:
             case CM_CAMEL_WORD:
                 next_letter_is_upper = true;
-                break;
+                next_space_is_exit   = true;
+                return false;
 
             case CM_CAPS_LOCK:
             case CM_NUM_LOCK:
             case CM_DISABLED:
-                tap_code16(KC_SPC);
                 break;
         }
-        return false;
+        return true;
     }
     next_space_is_exit = false;
 
@@ -164,12 +159,10 @@ bool process_record_casemode(uint16_t keycode, keyrecord_t *record) {
                 tap_before_next_letter = KC_NO;
             }
             if (next_letter_is_upper || all_letters_are_upper) {
-                tap_code16(LSFT(tap_keycode));
+                add_oneshot_mods(MOD_LSFT);
                 next_letter_is_upper = false;
-            } else {
-                tap_code16(tap_keycode);
             }
-            return false;
+            break;
 
         case KC_1 ... KC_0:
         case KC_MINS:

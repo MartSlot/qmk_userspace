@@ -11,7 +11,9 @@ void lock_number_layer(void) {
 
 void unlock_number_layer(void) {
     is_number_layer_locked = false;
-    layer_off(LAYER_NUMBERS);
+    if (IS_LAYER_ON(LAYER_NUMBERS)) {
+        layer_off(LAYER_NUMBERS);
+    }
 }
 
 layer_state_t default_layer_state_set_user(layer_state_t state) {
