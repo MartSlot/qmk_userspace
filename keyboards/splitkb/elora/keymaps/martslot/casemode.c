@@ -2,14 +2,14 @@
 #include "keymap.h"
 #include "layers.h"
 
-casemode_type current_mode           = CM_DISABLED;
+casemode_type current_casemode       = CM_DISABLED;
 bool          next_space_is_exit     = false;
 uint16_t      tap_before_next_letter = KC_NO;
 bool          next_letter_is_upper   = false;
 bool          all_letters_are_upper  = false;
 
 void disable_casemode() {
-    current_mode = CM_DISABLED;
+    current_casemode = CM_DISABLED;
     unlock_number_layer();
 }
 
@@ -26,11 +26,11 @@ void begin_casemode(casemode_type casemode) {
     if (casemode == CM_NUM_WORD || casemode == CM_NUM_LOCK) {
         lock_number_layer();
     }
-    current_mode = casemode;
+    current_casemode = casemode;
 }
 
 casemode_type get_current_casemode() {
-    return current_mode;
+    return current_casemode;
 }
 
 bool start_casemode_and_return_if_started(uint16_t keycode, keyrecord_t *record) {
@@ -40,7 +40,7 @@ bool start_casemode_and_return_if_started(uint16_t keycode, keyrecord_t *record)
 
     switch (keycode) {
         case UC_CAPS_WORD:
-            switch (current_mode) {
+            switch (current_casemode) {
                 case CM_CAPS_LOCK:
                     disable_casemode();
                     break;
@@ -62,7 +62,7 @@ bool start_casemode_and_return_if_started(uint16_t keycode, keyrecord_t *record)
             begin_casemode(CM_CAMEL_WORD);
             return true;
         case UC_NUM_WORD:
-            switch (current_mode) {
+            switch (current_casemode) {
                 case CM_DISABLED:
                     begin_casemode(CM_NUM_WORD);
                     break;
@@ -81,7 +81,7 @@ bool start_casemode_and_return_if_started(uint16_t keycode, keyrecord_t *record)
 }
 
 bool should_ignore_event(uint16_t keycode, keyrecord_t *record) {
-    if (current_mode == CM_DISABLED || !record->event.pressed) {
+    if (current_casemode == CM_DISABLED || !record->event.pressed) {
         return true;
     }
 
@@ -113,7 +113,7 @@ bool process_record_casemode(uint16_t keycode, keyrecord_t *record) {
             return true;
         }
 
-        switch (current_mode) {
+        switch (current_casemode) {
             case CM_CAPS_WORD:
             case CM_NUM_WORD:
                 disable_casemode();
@@ -188,12 +188,12 @@ bool process_record_casemode(uint16_t keycode, keyrecord_t *record) {
         case KC_EQL:
         case KC_LPRN:
         case KC_RPRN:
-            if (current_mode == CM_NUM_WORD) {
+            if (current_casemode == CM_NUM_WORD) {
                 break;
             }
             // Fallthrough!
         default:
-            if (current_mode != CM_CAPS_LOCK && current_mode != CM_NUM_LOCK) {
+            if (current_casemode != CM_CAPS_LOCK && current_casemode != CM_NUM_LOCK) {
                 disable_casemode();
             }
             return true;

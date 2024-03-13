@@ -4,10 +4,9 @@
 #include "layers.h"
 
 enum keycodes {
-    SW_NWIN = SAFE_RANGE,
-    SW_PWIN,
-    SW_NTAB,
-    SW_PTAB,
+    SW_WIN = SAFE_RANGE,
+    SW_TAB,
+    SW_PREV,
 
     CO_DELETE,
     CO_BACKSPACE,
