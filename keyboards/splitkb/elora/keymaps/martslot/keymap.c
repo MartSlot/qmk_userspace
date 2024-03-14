@@ -4,7 +4,6 @@
 #include "combos.h"
 #include "keycodes.h"
 #include "layers.h"
-#include "repeat.h"
 #include "switcher.h"
 
 // clang-format off
@@ -15,7 +14,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       __NOP__, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,             __NOP__, __NOP__,          KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_VOLD,
       KC_LCTL, MT_GA,   MT_AS,   MT_CD,   MT_SF,   KC_G,             __NOP__, __NOP__,          KC_H,    MT_SJ,   MT_CK,   MT_AL,   MT_GS,   KC_MUTE,
       __NOP__, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_DEL,  KC_ENT,  __NOP__, __NOP__, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_QUOT, KC_MPLY,
-                                 __NOP__, KC_LGUI, __NOP__, LA_SHRT, LT_NSPC, LT_SREP, LA_FUNC, __NOP__, KC_LEFT, KC_RGHT
+                                 __NOP__, KC_LGUI, __NOP__, LA_SHRT, LT_NSPC, LT_SOSS, LA_FUNC, __NOP__, KC_LEFT, KC_RGHT
     ),
 
     [LAYER_COMBOS] = LAYOUT(
@@ -88,7 +87,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LT_NSPC:
-        case LT_SREP:
+        case LT_SOSS:
         case MT_SF:
         case MT_SJ:
             return true;
@@ -107,8 +106,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!process_record_combo(keycode, record)) {
         return false;
     }
-    if (!process_record_repeat(keycode, record)) {
-        return false;
+
+    if (keycode == LT_SOSS && record->tap.count) {
+        add_oneshot_mods(MOD_LSFT);
     }
 
     return true;

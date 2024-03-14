@@ -39,7 +39,6 @@ AUTO_SHIFT_ENABLE = no
 COMBO_ENABLE = yes
 KEY_OVERRIDE_ENABLE = yes
 LEADER_ENABLE = yes
-REPEAT_KEY_ENABLE = yes
 
 INTROSPECTION_KEYMAP_C = combos.c
 SRC += casemode.c
@@ -47,5 +46,4 @@ SRC += layers.c
 SRC += leader.c
 SRC += oled.c
 SRC += overrides.c
-SRC += repeat.c
 SRC += switcher.c
