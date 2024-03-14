@@ -20,7 +20,7 @@
 // #define MYRIAD_ENABLE
 
 // Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed
-#define DEBOUNCE 5
+#define DEBOUNCE 10
 
 // Above is default settings
 
