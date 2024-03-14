@@ -34,6 +34,9 @@ uint16_t last_keycode    = 0;
 uint16_t last_event_time = 0;
 
 bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
+    if (timer_elapsed(last_event_time) < 100 && combo->keycode != last_keycode) {
+        return false;
+    }
     return true;
 }
 
