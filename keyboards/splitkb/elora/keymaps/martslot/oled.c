@@ -147,15 +147,15 @@ bool oled_task_user(void) {
                 oled_write_ln_P(PSTR(""), false);
                 oled_write_P(PSTR("PuHo\x18 EnPd"), false);
                 oled_write_ln_P(PSTR("\x11 \x1B \x19 \x1A \x09"), false);
-                oled_write_ln_P(PSTR("\x09 RtBsDel\x09"), false);
+                oled_write_P(PSTR("\x09 RtBsDel\x09"), false);
                 oled_write_ln_P(PSTR("Rep Fun"), false);
                 break;
             case LAYER_SYMBOLS:
                 oled_write_ln_P(PSTR("> Symbols"), false);
                 oled_write_ln_P(PSTR(""), false);
-                oled_write_ln_P(PSTR("` : [ ] %"), false);
-                oled_write_ln_P(PSTR("| _ ( ) ?"), false);
-                oled_write_ln_P(PSTR("~ & { } @"), false);
+                oled_write_ln_P(PSTR("` & [ ] %"), false);
+                oled_write_ln_P(PSTR(": _ ( ) ?"), false);
+                oled_write_ln_P(PSTR("~ | { } @"), false);
                 oled_write_ln_P(PSTR("Rep Fun"), false);
                 break;
             case LAYER_NUMBERS:
@@ -171,7 +171,7 @@ bool oled_task_user(void) {
                 oled_write_ln_P(PSTR(""), false);
                 oled_write_ln_P(PSTR("\x09 \x09 \x09 \x09 \x09"), false);
                 oled_write_P(PSTR("F6F7F8F9F0"), false);
-                oled_write_ln_P(PSTR("\x09 F12\x09\x09\x09"), false);
+                oled_write_ln_P(PSTR("\x09 F12\x09 \x09 \x09"), false);
                 oled_write_ln_P(PSTR("Rep Fun"), false);
                 break;
             case LAYER_GAMING:

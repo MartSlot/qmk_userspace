@@ -43,9 +43,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [LAYER_SYMBOLS] = LAYOUT(
       __NOP__, __NOP__, __NOP__, __NOP__, __NOP__, __NOP__,          __NOP__, __NOP__,          __NOP__, __NOP__, __NOP__, __NOP__, __NOP__, KC_VOLU,
-      __NOP__, KC_QUOT, KC_LABK, KC_RABK, KC_DQUO, __NOP__,          __NOP__, __NOP__,          KC_GRV,  KC_COLN, KC_LBRC, KC_RBRC, KC_PERC, KC_VOLD,
-      __NOP__, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_HASH,          __NOP__, __NOP__,          KC_PIPE, KC_UNDS, KC_LPRN, KC_RPRN, KC_QUES, KC_MUTE,
-      __NOP__, KC_CIRC, KC_SLSH, KC_ASTR, KC_BSLS, KC_DLR,  __NOP__, __NOP__, __NOP__, __NOP__, KC_TILD, KC_AMPR, KC_LCBR, KC_RCBR, KC_AT,   KC_MPLY,
+      __NOP__, KC_QUOT, KC_LABK, KC_RABK, KC_DQUO, __NOP__,          __NOP__, __NOP__,          KC_GRV,  KC_AMPR, KC_LBRC, KC_RBRC, KC_PERC, KC_VOLD,
+      __NOP__, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_HASH,          __NOP__, __NOP__,          KC_COLN, KC_UNDS, KC_LPRN, KC_RPRN, KC_QUES, KC_MUTE,
+      __NOP__, KC_CIRC, KC_SLSH, KC_ASTR, KC_BSLS, KC_DLR,  __NOP__, __NOP__, __NOP__, __NOP__, KC_TILD, KC_PIPE, KC_LCBR, KC_RCBR, KC_AT,   KC_MPLY,
                                  __NOP__, __NOP__, __NOP__, _______, _______, _______, _______, __NOP__, __NOP__, __NOP__
     ),
 
