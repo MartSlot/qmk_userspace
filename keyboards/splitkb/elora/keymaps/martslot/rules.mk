@@ -35,12 +35,13 @@ EXTRAKEY_ENABLE = yes      # Audio and system control
 # N-key rollover instead of 6-key rollover
 NKRO_ENABLE = yes          # Enable N-Key Rollover
 
-AUTO_SHIFT_ENABLE = no
+AUTO_SHIFT_ENABLE = yes
 COMBO_ENABLE = yes
 KEY_OVERRIDE_ENABLE = yes
 LEADER_ENABLE = yes
 
 INTROSPECTION_KEYMAP_C = combos.c
+SRC += autoshift.c
 SRC += casemode.c
 SRC += layers.c
 SRC += leader.c

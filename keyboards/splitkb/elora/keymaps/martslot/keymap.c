@@ -114,10 +114,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
-bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
-    return false;
-}
-
 uint16_t get_tap_keycode_for_key(uint16_t keycode) {
     switch (keycode) {
         case QK_MOD_TAP ... QK_MOD_TAP_MAX:
