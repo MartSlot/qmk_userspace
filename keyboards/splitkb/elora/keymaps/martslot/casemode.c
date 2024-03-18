@@ -37,41 +37,39 @@ casemode_type get_current_casemode() {
 bool start_casemode_and_return_if_started(uint16_t pressed_keycode) {
     switch (pressed_keycode) {
         case UC_CAPS_WORD:
-            if (current_casemode == CM_CAPS_WORD && timer_elapsed(casemode_start_time) < 500) {
+            if (current_casemode == CM_CAPS_WORD && timer_elapsed(casemode_start_time) < 750) {
                 begin_casemode(CM_CAPS_LOCK);
-            } else if (current_casemode == CM_CAPS_LOCK) {
+            } else if (current_casemode == CM_CAPS_WORD || current_casemode == CM_CAPS_LOCK) {
                 disable_casemode();
             } else {
                 begin_casemode(CM_CAPS_WORD);
             }
             return true;
         case UC_SNAKE_WORD:
-            if (current_casemode == CM_SNAKE_WORD && timer_elapsed(casemode_start_time) < 500) {
+            if (current_casemode == CM_SNAKE_WORD && timer_elapsed(casemode_start_time) < 750) {
                 begin_casemode(CM_SCREAMING_SNAKE_WORD);
-            } else if (current_casemode == CM_SCREAMING_SNAKE_WORD) {
+            } else if (current_casemode == CM_SNAKE_WORD || current_casemode == CM_SCREAMING_SNAKE_WORD) {
                 disable_casemode();
             } else {
                 begin_casemode(CM_SNAKE_WORD);
             }
             return true;
         case UC_CAMEL_WORD:
-            if (current_casemode == CM_CAMEL_WORD) {
-                if (!next_letter_is_upper) {
-                    next_letter_is_upper = true;
-                } else {
-                    disable_casemode();
-                }
+            if (current_casemode == CM_CAMEL_WORD && timer_elapsed(casemode_start_time) < 750) {
+                next_letter_is_upper = true;
+            } else if (current_casemode == CM_CAMEL_WORD) {
+                disable_casemode();
             } else {
                 begin_casemode(CM_CAMEL_WORD);
             }
             return true;
         case UC_NUM_WORD:
-            if (current_casemode == CM_NUM_WORD && timer_elapsed(casemode_start_time) < 500) {
+            if (current_casemode == CM_NUM_WORD && timer_elapsed(casemode_start_time) < 750) {
                 begin_casemode(CM_NUM_LOCK);
-            } else if (current_casemode == CM_DISABLED) {
-                begin_casemode(CM_NUM_WORD);
-            } else {
+            } else if (current_casemode == CM_NUM_WORD || current_casemode == CM_NUM_LOCK) {
                 disable_casemode();
+            } else {
+                begin_casemode(CM_NUM_WORD);
             }
             return true;
         default:
