@@ -36,7 +36,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [LAYER_NAVIGATION] = LAYOUT(
       __NOP__, __NOP__, __NOP__, __NOP__, __NOP__, __NOP__,          __NOP__, __NOP__,          __NOP__, __NOP__, __NOP__, __NOP__, __NOP__, KC_VOLU,
       __NOP__, KC_ESC,  SW_PREV, SW_TAB,  SW_WIN,  __NOP__,          __NOP__, __NOP__,          KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_PGDN, KC_VOLD,
-      __NOP__, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, __NOP__,          __NOP__, __NOP__,          QK_LEAD, KC_LEFT, KC_DOWN, KC_RGHT, __NOP__, KC_MUTE,
+      __NOP__, KC_LGUI, MT_ACML, MT_CSNK, MT_SCAP, __NOP__,          __NOP__, __NOP__,          QK_LEAD, KC_LEFT, KC_DOWN, KC_RGHT, __NOP__, KC_MUTE,
       __NOP__, __NOP__, __NOP__, __NOP__, __NOP__, __NOP__, KC_BSPC, KC_ENT,  __NOP__, __NOP__, __NOP__, KC_ENT,  KC_BSPC, KC_DEL,  __NOP__, KC_MPLY,
                                  LA_GAME, __NOP__, __NOP__, _______, _______, _______, _______, __NOP__, __NOP__, __NOP__
     ),
@@ -120,6 +120,27 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
 
     return true;
+}
+
+uint16_t get_pressed_keycode_for_event(uint16_t keycode, const keyrecord_t *record) {
+    if (!record->event.pressed) {
+        return KC_NO;
+    }
+
+    switch (keycode) {
+        case QK_MOD_TAP ... QK_MOD_TAP_MAX:
+            if (record->tap.count == 0) {
+                return KC_NO;
+            }
+            return QK_MOD_TAP_GET_TAP_KEYCODE(keycode);
+        case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
+            if (record->tap.count == 0) {
+                return KC_NO;
+            }
+            return QK_LAYER_TAP_GET_TAP_KEYCODE(keycode);
+        default:
+            return keycode;
+    }
 }
 
 uint16_t get_tap_keycode_for_key(uint16_t keycode) {

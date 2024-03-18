@@ -35,13 +35,9 @@ casemode_type get_current_casemode() {
 }
 
 bool start_casemode_and_return_if_started(uint16_t keycode, keyrecord_t *record) {
-    if (!record->event.pressed) {
-        return false;
-    }
-
-    switch (keycode) {
+    switch (get_pressed_keycode_for_event(keycode, record)) {
         case UC_CAPS_WORD:
-            if (current_casemode == CM_CAPS_WORD && timer_elapsed(casemode_start_time) < 1000) {
+            if (current_casemode == CM_CAPS_WORD && timer_elapsed(casemode_start_time) < 500) {
                 begin_casemode(CM_CAPS_LOCK);
             } else if (current_casemode == CM_CAPS_LOCK) {
                 disable_casemode();
@@ -50,16 +46,27 @@ bool start_casemode_and_return_if_started(uint16_t keycode, keyrecord_t *record)
             }
             return true;
         case UC_SNAKE_WORD:
-            begin_casemode(CM_SNAKE_WORD);
-            return true;
-        case UC_SCREAMING_SNAKE_WORD:
-            begin_casemode(CM_SCREAMING_SNAKE_WORD);
+            if (current_casemode == CM_SNAKE_WORD && timer_elapsed(casemode_start_time) < 500) {
+                begin_casemode(CM_SCREAMING_SNAKE_WORD);
+            } else if (current_casemode == CM_SCREAMING_SNAKE_WORD) {
+                disable_casemode();
+            } else {
+                begin_casemode(CM_SNAKE_WORD);
+            }
             return true;
         case UC_CAMEL_WORD:
-            begin_casemode(CM_CAMEL_WORD);
+            if (current_casemode == CM_CAMEL_WORD) {
+                if (!next_letter_is_upper) {
+                    next_letter_is_upper = true;
+                } else {
+                    disable_casemode();
+                }
+            } else {
+                begin_casemode(CM_CAMEL_WORD);
+            }
             return true;
         case UC_NUM_WORD:
-            if (current_casemode == CM_NUM_WORD && timer_elapsed(casemode_start_time) < 1000) {
+            if (current_casemode == CM_NUM_WORD && timer_elapsed(casemode_start_time) < 500) {
                 begin_casemode(CM_NUM_LOCK);
             } else if (current_casemode == CM_DISABLED) {
                 begin_casemode(CM_NUM_WORD);
