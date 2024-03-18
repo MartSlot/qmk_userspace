@@ -40,7 +40,7 @@ void autoshift_press_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
             SEND_STRING("*=");
             break;
         case KC_SLASH:
-            SEND_STRING("/=");
+            SEND_STRING("//");
             break;
         case KC_EQUAL:
             SEND_STRING("==");
