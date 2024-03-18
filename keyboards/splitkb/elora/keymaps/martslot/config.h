@@ -25,8 +25,9 @@
 // Above is default settings
 
 #define PERMISSIVE_HOLD_PER_KEY
+#define QUICK_TAP_TERM_PER_KEY
 #define TAPPING_TERM_PER_KEY
-#define TAPPING_TERM 180
+#define TAPPING_TERM 200
 
 #undef RGBLIGHT_DEFAULT_ON
 #define RGBLIGHT_DEFAULT_ON false
