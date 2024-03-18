@@ -84,4 +84,3 @@ enum keycodes {
 #define LA_GAMX MO(LAYER_GAMING_EXTRA)
 
 uint16_t get_pressed_keycode_for_event(uint16_t keycode, const keyrecord_t *record);
-uint16_t get_tap_keycode_for_key(uint16_t keycode);

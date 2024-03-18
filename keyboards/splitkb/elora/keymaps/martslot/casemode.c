@@ -34,8 +34,8 @@ casemode_type get_current_casemode() {
     return current_casemode;
 }
 
-bool start_casemode_and_return_if_started(uint16_t keycode, keyrecord_t *record) {
-    switch (get_pressed_keycode_for_event(keycode, record)) {
+bool start_casemode_and_return_if_started(uint16_t pressed_keycode) {
+    switch (pressed_keycode) {
         case UC_CAPS_WORD:
             if (current_casemode == CM_CAPS_WORD && timer_elapsed(casemode_start_time) < 500) {
                 begin_casemode(CM_CAPS_LOCK);
@@ -99,15 +99,15 @@ bool should_ignore_event(uint16_t keycode, keyrecord_t *record) {
 uint16_t last_key = KC_NO;
 
 bool process_record_casemode(uint16_t keycode, keyrecord_t *record) {
-    if (start_casemode_and_return_if_started(keycode, record)) {
+    uint16_t pressed_keycode = get_pressed_keycode_for_event(keycode, record);
+    if (start_casemode_and_return_if_started(pressed_keycode)) {
         return true;
     }
-    if (should_ignore_event(keycode, record)) {
+    if (current_casemode == CM_DISABLED || pressed_keycode == KC_NO) {
         return true;
     }
-    uint16_t tap_keycode = get_tap_keycode_for_key(keycode);
 
-    if (tap_keycode == KC_SPC) {
+    if (pressed_keycode == KC_SPC) {
         if (next_space_is_exit) {
             disable_casemode();
             return true;
@@ -139,7 +139,7 @@ bool process_record_casemode(uint16_t keycode, keyrecord_t *record) {
     }
     next_space_is_exit = false;
 
-    if (tap_keycode == KC_BSPC) {
+    if (pressed_keycode == KC_BSPC) {
         if (next_letter_is_upper) {
             next_letter_is_upper = false;
             return false;
@@ -152,7 +152,7 @@ bool process_record_casemode(uint16_t keycode, keyrecord_t *record) {
         return false;
     }
 
-    switch (tap_keycode) {
+    switch (pressed_keycode) {
         case KC_A ... KC_Z:
             if (tap_before_next_letter != KC_NO) {
                 tap_code16(tap_before_next_letter);
@@ -171,7 +171,7 @@ bool process_record_casemode(uint16_t keycode, keyrecord_t *record) {
         case KC_DOWN:
         case KC_LEFT:
         case KC_RIGHT:
-            last_key = tap_keycode;
+            last_key = pressed_keycode;
             if (tap_before_next_letter != KC_NO) {
                 tap_code16(tap_before_next_letter);
                 tap_before_next_letter = KC_NO;

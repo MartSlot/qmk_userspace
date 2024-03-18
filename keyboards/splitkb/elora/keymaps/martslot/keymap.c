@@ -115,8 +115,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return false;
     }
 
-    if (keycode == LT_SOSS && record->tap.count) {
+    if (get_pressed_keycode_for_event(keycode, record) == UC_ONESHOT_SHIFT) {
         add_oneshot_mods(MOD_LSFT);
+        return false;
     }
 
     return true;
@@ -138,16 +139,6 @@ uint16_t get_pressed_keycode_for_event(uint16_t keycode, const keyrecord_t *reco
                 return KC_NO;
             }
             return QK_LAYER_TAP_GET_TAP_KEYCODE(keycode);
-        default:
-            return keycode;
-    }
-}
-
-uint16_t get_tap_keycode_for_key(uint16_t keycode) {
-    switch (keycode) {
-        case QK_MOD_TAP ... QK_MOD_TAP_MAX:
-        case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
-            return keycode &= 0xff;
         case CO_DELETE:
             return KC_DELETE;
         case CO_BACKSPACE:
@@ -158,6 +149,7 @@ uint16_t get_tap_keycode_for_key(uint16_t keycode) {
             return LSFT(KC_TAB);
         case CO_ENTER:
             return KC_ENTER;
+        default:
+            return keycode;
     }
-    return keycode;
 }
