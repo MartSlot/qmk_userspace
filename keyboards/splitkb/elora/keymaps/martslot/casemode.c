@@ -78,24 +78,6 @@ bool start_casemode_and_return_if_started(uint16_t pressed_keycode) {
     return false;
 }
 
-bool should_ignore_event(uint16_t keycode, keyrecord_t *record) {
-    if (current_casemode == CM_DISABLED || !record->event.pressed) {
-        return true;
-    }
-
-    switch (keycode) {
-        case QK_MOD_TAP ... QK_MOD_TAP_MAX:
-        case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
-            if (record->tap.count == 0) {
-                return true;
-            }
-        default:
-            break;
-    }
-    return false;
-}
-uint16_t last_key = KC_NO;
-
 bool process_record_casemode(uint16_t keycode, keyrecord_t *record) {
     uint16_t pressed_keycode = get_pressed_keycode_for_event(keycode, record);
     if (start_casemode_and_return_if_started(pressed_keycode)) {
@@ -169,7 +151,6 @@ bool process_record_casemode(uint16_t keycode, keyrecord_t *record) {
         case KC_DOWN:
         case KC_LEFT:
         case KC_RIGHT:
-            last_key = pressed_keycode;
             if (tap_before_next_letter != KC_NO) {
                 tap_code16(tap_before_next_letter);
                 tap_before_next_letter = KC_NO;
