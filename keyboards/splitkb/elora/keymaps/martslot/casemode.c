@@ -3,6 +3,7 @@
 #include "layers.h"
 
 casemode_type current_casemode       = CM_DISABLED;
+uint16_t      casemode_start_time    = 0;
 bool          next_space_is_exit     = false;
 uint16_t      tap_before_next_letter = KC_NO;
 bool          next_letter_is_upper   = false;
@@ -18,7 +19,7 @@ void begin_casemode(casemode_type casemode) {
     if (casemode == CM_DISABLED) {
         return;
     }
-
+    casemode_start_time    = timer_read();
     next_space_is_exit     = false;
     tap_before_next_letter = KC_NO;
     all_letters_are_upper  = (casemode == CM_CAPS_WORD || casemode == CM_CAPS_LOCK || casemode == CM_SCREAMING_SNAKE_WORD);
@@ -40,16 +41,12 @@ bool start_casemode_and_return_if_started(uint16_t keycode, keyrecord_t *record)
 
     switch (keycode) {
         case UC_CAPS_WORD:
-            switch (current_casemode) {
-                case CM_CAPS_LOCK:
-                    disable_casemode();
-                    break;
-                case CM_CAPS_WORD:
-                    begin_casemode(CM_CAPS_LOCK);
-                    break;
-                default:
-                    begin_casemode(CM_CAPS_WORD);
-                    break;
+            if (current_casemode == CM_CAPS_WORD && timer_elapsed(casemode_start_time) < 1000) {
+                begin_casemode(CM_CAPS_LOCK);
+            } else if (current_casemode == CM_CAPS_LOCK) {
+                disable_casemode();
+            } else {
+                begin_casemode(CM_CAPS_WORD);
             }
             return true;
         case UC_SNAKE_WORD:
@@ -62,16 +59,12 @@ bool start_casemode_and_return_if_started(uint16_t keycode, keyrecord_t *record)
             begin_casemode(CM_CAMEL_WORD);
             return true;
         case UC_NUM_WORD:
-            switch (current_casemode) {
-                case CM_DISABLED:
-                    begin_casemode(CM_NUM_WORD);
-                    break;
-                case CM_NUM_WORD:
-                    begin_casemode(CM_NUM_LOCK);
-                    break;
-                default:
-                    disable_casemode();
-                    break;
+            if (current_casemode == CM_NUM_WORD && timer_elapsed(casemode_start_time) < 1000) {
+                begin_casemode(CM_NUM_LOCK);
+            } else if (current_casemode == CM_DISABLED) {
+                begin_casemode(CM_NUM_WORD);
+            } else {
+                disable_casemode();
             }
             return true;
         default:
