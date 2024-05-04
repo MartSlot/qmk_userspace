@@ -1,16 +1,20 @@
 #include "combos.h"
 
-enum combos { COMBO_DELETE, COMBO_BACKSPACE, COMBO_TAB, COMBO_SHIFT_TAB, COMBO_ENTER, COMBO_NUM_WORD };
+enum combos { COMBO_REBOOT_LEFT, COMBO_REBOOT_RIGHT, COMBO_DELETE, COMBO_BACKSPACE, COMBO_TAB, COMBO_SHIFT_TAB, COMBO_ENTER, COMBO_NUM_WORD };
 
-const uint16_t PROGMEM combo_delete[]    = {KC_L, KC_SCLN, COMBO_END};
-const uint16_t PROGMEM combo_backspace[] = {KC_K, KC_L, COMBO_END};
-const uint16_t PROGMEM combo_tab[]       = {KC_D, KC_F, COMBO_END};
-const uint16_t PROGMEM combo_shift_tab[] = {KC_S, KC_D, COMBO_END};
-const uint16_t PROGMEM combo_enter[]     = {KC_J, KC_K, COMBO_END};
-const uint16_t PROGMEM combo_num_word[]  = {KC_2, KC_3, COMBO_END};
+const uint16_t PROGMEM combo_reboot_left[]  = {KC_1, KC_2, KC_Q, COMBO_END};
+const uint16_t PROGMEM combo_reboot_right[] = {KC_3, KC_4, KC_P, COMBO_END};
+const uint16_t PROGMEM combo_delete[]       = {KC_L, KC_SCLN, COMBO_END};
+const uint16_t PROGMEM combo_backspace[]    = {KC_K, KC_L, COMBO_END};
+const uint16_t PROGMEM combo_tab[]          = {KC_D, KC_F, COMBO_END};
+const uint16_t PROGMEM combo_shift_tab[]    = {KC_S, KC_D, COMBO_END};
+const uint16_t PROGMEM combo_enter[]        = {KC_J, KC_K, COMBO_END};
+const uint16_t PROGMEM combo_num_word[]     = {KC_2, KC_3, COMBO_END};
 
 // clang-format off
 combo_t key_combos[] = {
+    [COMBO_REBOOT_LEFT]          = COMBO(combo_reboot_left, QK_BOOTLOADER),
+    [COMBO_REBOOT_RIGHT]         = COMBO(combo_reboot_right, QK_BOOTLOADER),
     [COMBO_DELETE]               = COMBO(combo_delete, CO_DELETE),
     [COMBO_BACKSPACE]            = COMBO(combo_backspace, CO_BACKSPACE),
     [COMBO_TAB]                  = COMBO(combo_tab, CO_TAB),
