@@ -1,10 +1,11 @@
-#include "keymap.h"
+#include "shared/keymap.h"
 
-#include "casemode.h"
-#include "combos.h"
-#include "keycodes.h"
-#include "layers.h"
-#include "switcher.h"
+#include "shared/casemode.h"
+#include "shared/combos.h"
+#include "shared/layers.h"
+#include "shared/switcher.h"
+
+#include QMK_KEYBOARD_H
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {

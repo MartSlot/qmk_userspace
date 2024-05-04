@@ -1,5 +1,5 @@
 #include "layers.h"
-#include "combos.h"
+#include "shared/combos.h"
 #include QMK_KEYBOARD_H
 
 bool is_number_layer_locked = false;

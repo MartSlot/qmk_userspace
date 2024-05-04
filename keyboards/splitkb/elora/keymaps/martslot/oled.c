@@ -1,7 +1,7 @@
-#include "keymap.h"
-#include "layers.h"
-#include "leader.h"
-#include "casemode.h"
+#include "shared/keymap.h"
+#include "shared/layers.h"
+#include "shared/leader.h"
+#include "shared/casemode.h"
 
 #ifdef OLED_ENABLE
 bool oled_task_user(void) {

@@ -1,7 +1,7 @@
 #pragma once
-#include QMK_KEYBOARD_H
 #include "keycodes.h"
 #include "layers.h"
+#include QMK_KEYBOARD_H
 
 enum keycodes {
     SW_WIN = SAFE_RANGE,

@@ -1,5 +1,4 @@
 #include "combos.h"
-#include "keycodes.h"
 
 enum combos { COMBO_DELETE, COMBO_BACKSPACE, COMBO_TAB, COMBO_SHIFT_TAB, COMBO_ENTER, COMBO_NUM_WORD };
 
