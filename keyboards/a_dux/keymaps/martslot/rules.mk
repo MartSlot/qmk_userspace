@@ -11,7 +11,7 @@ AUTO_SHIFT_ENABLE = yes
 COMBO_ENABLE = yes
 KEY_OVERRIDE_ENABLE = yes
 LEADER_ENABLE = yes
-
+OS_DETECTION_ENABLE = yes
 
 INTROSPECTION_KEYMAP_C = shared/combos.c
 SRC += shared/autoshift.c
