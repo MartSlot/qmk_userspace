@@ -60,7 +60,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [LAYER_FUNCTION] = LAYOUT(
       __NOP__, __NOP__, __NOP__, __NOP__, __NOP__, __NOP__,          __NOP__, __NOP__,          __NOP__, __NOP__, __NOP__, __NOP__, __NOP__, __NOP__,
-      __NOP__, __NOP__, __NOP__, __NOP__, __NOP__, __NOP__,          __NOP__, __NOP__,          __NOP__, __NOP__, __NOP__, __NOP__, __NOP__, __NOP__,
+      __NOP__, __NOP__, __NOP__, __NOP__, __NOP__, __NOP__,          __NOP__, __NOP__,          __NOP__, KC_MPLY, KC_MUTE, KC_VOLD, KC_VOLU, __NOP__,
       __NOP__, MT_GF1,  MT_AF2,  MT_CF3,  MT_SF4,  KC_F5,            __NOP__, __NOP__,          KC_F6,   MT_SF7,  MT_CF8,  MT_AF9,  MT_GF10, __NOP__,
       __NOP__, __NOP__, __NOP__, __NOP__, KC_F11,  __NOP__, __NOP__, __NOP__, __NOP__, __NOP__, __NOP__, KC_F12,  __NOP__, __NOP__,  __NOP__, __NOP__,
                                  __NOP__, __NOP__, __NOP__, _______, _______, _______, _______, __NOP__, __NOP__, __NOP__

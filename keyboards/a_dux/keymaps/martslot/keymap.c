@@ -32,7 +32,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [LAYER_NAVIGATION] = LAYOUT(
         KC_ESC,  SW_PREV, SW_TAB,  SW_WIN,  __NOP__,                   KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_PGDN,
         KC_LGUI, MT_ACML, MT_CSNK, MT_SCAP, __NOP__,                   QK_LEAD, KC_LEFT, KC_DOWN, KC_RGHT, __NOP__,
-        LA_GAME, __NOP__, __NOP__, __NOP__, __NOP__,                   __NOP__, KC_ENT,  KC_BSPC, KC_DEL,  __NOP__,
+        LA_GAME, __NOP__, KC_LEFT, KC_RGHT, __NOP__,                   __NOP__, KC_ENT,  KC_BSPC, KC_DEL,  __NOP__,
                                             _______, _______, _______, _______
     ),
 
@@ -51,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [LAYER_FUNCTION] = LAYOUT(
-        __NOP__, __NOP__, __NOP__, __NOP__, __NOP__,                   __NOP__, __NOP__, __NOP__, __NOP__, __NOP__,
+        __NOP__, __NOP__, __NOP__, __NOP__, __NOP__,                   __NOP__, KC_MPLY, KC_MUTE, KC_VOLD, KC_VOLU,
         MT_GF1,  MT_AF2,  MT_CF3,  MT_SF4,  KC_F5,                     KC_F6,   MT_SF7,  MT_CF8,  MT_AF9,  MT_GF10,
         __NOP__, __NOP__, __NOP__, KC_F11,  __NOP__,                   __NOP__, KC_F12,  __NOP__, __NOP__, __NOP__,
                                             _______, _______, _______, _______
