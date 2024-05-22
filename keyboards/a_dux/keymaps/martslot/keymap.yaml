@@ -1,0 +1,111 @@
+layout:
+  ortho_layout: 
+    split: true
+    rows: 3
+    columns: 5
+    thumbs: 2
+layers:
+  QWERTY:
+    - ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"]
+    - [{t: "A", h: "gui"}, {t: "S", h: "alt"}, {t: "D", h: "ctrl"}, {t: "F", h: "shift"}, "G", "H", {t: "J", h: "shift"}, {t: "K", h: "ctrl"}, {t: "L", h: "alt"}, {t: ";", h: "gui"}]
+    - ["Z", "X", "C", "V", "B", "N", "M", ",", ".", "'"]
+    - {h: Nav,  t: Space}
+    - {h: SHRT,   t: "SHRT (OS)"}
+    - {t: Function}
+    - {h: Sym, t: Repeat}
+  Combos:
+    - ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"]
+    - ["A", "S", "D", "F", "G", "H", "J", "K", "L", ";"]
+    - ["Z", "X", "C", "V", "B", "N", "M", ",", ".", "'"]
+    - {h: Nav,  t: Space}
+    - {h: SHRT,   t: "SHRT (OS)"}
+    - {t: Function}
+    - {h: Sym, t: Repeat}
+  Number Combos:
+    - ["", "", "", "", "", "", "", "", "", ""]
+    - ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
+    - ["", "", "", "", "", "", "", "", "", ""]
+    - ""
+    - ""
+    - ""
+    - {type: held}
+  Shortcuts:
+    - ["Ctrl Q", "Ctrl W", "Ctrl E", "Ctrl R", "Ctrl T", "", "", "", "", ""]
+    - ["Ctrl A", "Ctrl S", "Ctrl D", "Ctrl F", "Ctrl G", "", "Shift OS", "Ctrl OS", "Alt OS", "Gui OS"]
+    - ["Ctrl Z", "Ctrl X", "Ctrl C", "Ctrl V", "Ctrl Y", "", "", "", "", ""]
+    - {t: Space}
+    - {type: held}
+    - ""
+    - ""
+  Navigation:
+    - ["Esc", "", "Prev Window", "Next Window", "", "", "Home", "Up", "End", ""]
+    - ["Gui", "Alt", "Ctrl", "Shift", "", "Leader", "Left", "Down", "Right", ""]
+    - ["", "", "Prev Tab", "Next Tab", "", "", "Page Up", "Page Down", "", ""]
+    - {type: held}
+    - {h: SHRT,   t: "SHRT (OS)"}
+    - ""
+    - {t: Repeat}
+  Symbols:
+    - [{t: "'", h: ""}, {t: "<", h: "<="}, {t: ">", h: ">="}, {t: "\"", h: ""}, {t: "", h: ""}, {t: "`", h: ""}, {t: ":", h: "\"\""}, {t: "[", h: ""}, {t: "]", h: ""}, {t: "%", h: ""}]
+    - [{t: "!", h: "!="}, {t: "-", h: "-="}, {t: "+", h: "+="}, {t: "=", h: "=="}, {t: "#", h: ""}, {t: "|", h: "||"}, {t: "_", h: ""}, {t: "(", h: ""}, {t: ")", h: ""}, {t: "?", h: ""}]
+    - [{t: "^", h: ""}, {t: "/", h: "//"}, {t: "*", h: "*="}, {t: "\\", h: ""}, {t: "$", h: ""}, {t: "~", h: ""}, {t: "&", h: "&&"}, {t: "{", h: ""}, {t: "}", h: ""}, {t: "@", h: ""}]
+    - {h: NumWord,  t: Space}
+    - {h: SHRT,   t: "SHRT (OS)"}
+    - ""
+    - {type: held}
+  NumWord:
+    - ["", "", "", "", "", "", "", "", "", ""]
+    - [{t: "1", h: "gui"}, {t: "2", h: "alt"}, {t: "3", h: "ctrl"}, {t: "4", h: "shift"}, "5", "6", {t: "7", h: "shift"}, {t: "8", h: "ctrl"}, {t: "9", h: "alt"}, {t: "0", h: "gui"}]
+    - ["-", "/", "*", "+", "", "", "", ",", ".", ""]
+    - {h: Nav,  t: Space, type: ghost}
+    - {h: SHRT,   t: "SHRT (OS)", type: ghost}
+    - ""
+    - {h: Sym, t: Repeat}
+  Function:
+    - ["", "", "", "", "", "", "", "", "", ""]
+    - [{t: "F1", h: "gui"}, {t: "F2", h: "alt"}, {t: "F3", h: "ctrl"}, {t: "F4", h: "shift"}, "F5", "F6", {t: "F7", h: "shift"}, {t: "F8", h: "ctrl"}, {t: "F9", h: "alt"}, {t: "F10", h: "gui"}]
+    - ["", "", "", "", "F11", "F12", "", "", "", ""]
+    - ""
+    - ""
+    - {type: held}
+    - ""
+  Gaming:
+    - ["Tab", "Q", "W", "E", "R", "Y", "U", "I", "O", "P"]
+    - ["Shift", "A", "S", "D", "F", "H", "J", "K", "L", ";"]
+    - ["Ctrl", "Z", "X", "C", "V", "N", "M", ",", ".", "'"]
+    - {Space}
+    - {Extra}
+    - {Shift}
+    - {Qwerty}
+  Gaming Extra:
+    - ["1", "2", "3", "4", "5", "", "", "", "", ""]
+    - ["6", "7", "8", "9", "0", "", "", "", "", ""]
+    - ["B", "G", "T", "I", "M", "", "", "", "", ""]
+    - {t: Enter}
+    - {type: held}
+    - {Shift}
+    - {Qwerty}
+  # LAYER:
+    # - ["", "", "", "", "", "", "", "", "", ""]
+    # - ["", "", "", "", "", "", "", "", "", ""]
+    # - ["", "", "", "", "", "", "", "", "", ""]
+    # - {t: Boot, type: ghost}
+    # - Reset
+    # - Reset
+    # - {t: Boot, type: ghost}
+combos:
+  #- "Numword"
+  #- "Caseword"
+  #- "snake_case"
+  #- "camelCase"
+  #- "PascalCase"
+  #- "CONST_CASE"
+  - {p: [16, 17], k: "Enter", l: ["Combos"], align: top}
+  - {p: [17, 18], k: "Backspace", l: ["Combos"], align: top}
+  - {p: [18, 19], k: "Delete", l: ["Combos"], align: top}
+  - {p: [12, 13], k: "Tab", l: ["Combos"], align: bottom}
+  - {p: [11, 12], k: "Shift Tab", l: ["Combos"], align: bottom}
+  - {p: [31, 32], k: "CaseWord", l: ["Combos"], align: bottom}
+  - {p: [31, 32], k: "NumWord", l: ["Combos"], align: bottom}
+draw_config:
+  n_columns: 1
