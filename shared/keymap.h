@@ -36,42 +36,42 @@ enum keycodes {
 #define HOME_ROW_8(kc) RGUI_T(kc)
 
 // Default home row
-#define MT_GA HOME_ROW_1(KC_A)
-#define MT_AS HOME_ROW_2(KC_S)
-#define MT_CD HOME_ROW_3(KC_D)
-#define MT_SF HOME_ROW_4(KC_F)
+#define MT_A HOME_ROW_1(KC_A)
+#define MT_S HOME_ROW_2(KC_S)
+#define MT_D HOME_ROW_3(KC_D)
+#define MT_F HOME_ROW_4(KC_F)
 
-#define MT_SJ HOME_ROW_5(KC_J)
-#define MT_CK HOME_ROW_6(KC_K)
-#define MT_AL HOME_ROW_7(KC_L)
-#define MT_GS HOME_ROW_8(KC_SCLN)
+#define MT_J HOME_ROW_5(KC_J)
+#define MT_K HOME_ROW_6(KC_K)
+#define MT_L HOME_ROW_7(KC_L)
+#define MT_SCLN HOME_ROW_8(KC_SCLN)
 
 // Symbols home row
-#define MT_ACML HOME_ROW_2(UC_CAMEL_WORD)
-#define MT_CSNK HOME_ROW_3(UC_SNAKE_WORD)
-#define MT_SCAP HOME_ROW_4(UC_CAPS_WORD)
+#define MT_CMLW HOME_ROW_2(UC_CAMEL_WORD)
+#define MT_SNKW HOME_ROW_3(UC_SNAKE_WORD)
+#define MT_CAPW HOME_ROW_4(UC_CAPS_WORD)
 
 // Numbers home row
-#define MT_G1 HOME_ROW_1(KC_1)
-#define MT_A2 HOME_ROW_2(KC_2)
-#define MT_C3 HOME_ROW_3(KC_3)
-#define MT_S4 HOME_ROW_4(KC_4)
+#define MT_1 HOME_ROW_1(KC_1)
+#define MT_2 HOME_ROW_2(KC_2)
+#define MT_3 HOME_ROW_3(KC_3)
+#define MT_4 HOME_ROW_4(KC_4)
 
-#define MT_S7 HOME_ROW_5(KC_7)
-#define MT_C8 HOME_ROW_6(KC_8)
-#define MT_A9 HOME_ROW_7(KC_9)
-#define MT_G0 HOME_ROW_8(KC_0)
+#define MT_7 HOME_ROW_5(KC_7)
+#define MT_8 HOME_ROW_6(KC_8)
+#define MT_9 HOME_ROW_7(KC_9)
+#define MT_0 HOME_ROW_8(KC_0)
 
 // Function home row
-#define MT_GF1 HOME_ROW_1(KC_F1)
-#define MT_AF2 HOME_ROW_2(KC_F2)
-#define MT_CF3 HOME_ROW_3(KC_F3)
-#define MT_SF4 HOME_ROW_4(KC_F4)
+#define MT_F1 HOME_ROW_1(KC_F1)
+#define MT_F2 HOME_ROW_2(KC_F2)
+#define MT_F3 HOME_ROW_3(KC_F3)
+#define MT_F4 HOME_ROW_4(KC_F4)
 
-#define MT_SF7 HOME_ROW_5(KC_F7)
-#define MT_CF8 HOME_ROW_6(KC_F8)
-#define MT_AF9 HOME_ROW_7(KC_F9)
-#define MT_GF10 HOME_ROW_8(KC_F10)
+#define MT_F7 HOME_ROW_5(KC_F7)
+#define MT_F8 HOME_ROW_6(KC_F8)
+#define MT_F9 HOME_ROW_7(KC_F9)
+#define MT_F10 HOME_ROW_8(KC_F10)
 
 // Layer tap and layers
 #define LT_SBSP LT(LAYER_SHORTCUTS, KC_BACKSPACE)
