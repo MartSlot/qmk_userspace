@@ -12,7 +12,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
         MT_GA,   MT_AS,   MT_CD,   MT_SF,   KC_G,                      KC_H,    MT_SJ,   MT_CK,   MT_AL,   MT_GS,
         KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                      KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_QUOT,
-                                            LA_SHRT, LT_NSPC, LT_SOSS, LA_FUNC
+                                            LT_SBSP, LT_NSPC, LT_SOSS, LT_FENT
     ),
 
     [LAYER_COMBOS] = LAYOUT(
@@ -40,7 +40,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_QUOT, KC_LABK, KC_RABK, KC_DQUO, __NOP__,                   KC_GRV,  KC_AMPR, KC_LBRC, KC_RBRC, KC_PERC,
         KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_HASH,                   KC_COLN, KC_UNDS, KC_LPRN, KC_RPRN, KC_QUES,
         KC_CIRC, KC_SLSH, KC_ASTR, KC_BSLS, KC_DLR,                    KC_TILD, KC_PIPE, KC_LCBR, KC_RCBR, KC_AT,
-                                            _______, _______, _______, _______
+                                            LT_SDEL, _______, _______, _______
     ),
 
     [LAYER_NUMBERS] = LAYOUT(

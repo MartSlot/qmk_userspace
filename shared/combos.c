@@ -51,18 +51,18 @@ bool process_record_combo(uint16_t keycode, keyrecord_t *record) {
 
     switch (keycode) {
         case CO_DELETE:
-            if (record->event.pressed) {
-                register_code(KC_DELETE);
-            } else {
-                unregister_code(KC_DELETE);
-            }
+            //            if (record->event.pressed) {
+            //                register_code(KC_DELETE);
+            //            } else {
+            //                unregister_code(KC_DELETE);
+            //            }
             break;
         case CO_BACKSPACE:
-            if (record->event.pressed) {
-                register_code(KC_BACKSPACE);
-            } else {
-                unregister_code(KC_BACKSPACE);
-            }
+            //            if (record->event.pressed) {
+            //                register_code(KC_BACKSPACE);
+            //            } else {
+            //                unregister_code(KC_BACKSPACE);
+            //            }
             break;
         case CO_TAB:
             if (record->event.pressed) {
@@ -83,11 +83,11 @@ bool process_record_combo(uint16_t keycode, keyrecord_t *record) {
             }
             break;
         case CO_ENTER:
-            if (record->event.pressed) {
-                register_code(KC_ENTER);
-            } else {
-                unregister_code(KC_ENTER);
-            }
+            //            if (record->event.pressed) {
+            //                register_code(KC_ENTER);
+            //            } else {
+            //                unregister_code(KC_ENTER);
+            //            }
             break;
         default:
             break;
