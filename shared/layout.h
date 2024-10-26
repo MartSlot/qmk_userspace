@@ -10,9 +10,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [LAYER_QWERTY] = SHARED_LAYOUT(
         KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                      KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_VOLU,
-        __NOP__, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_VOLD,
-        __NOP__, MT_A,    MT_S,    MT_D,    MT_F,    KC_G,                      KC_H,    MT_J,    MT_K,    MT_L,    MT_SCLN, KC_MUTE,
-        __NOP__, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                      KC_N,    KC_M,    KC_COMM, KC_DOT,  __NOP__, KC_MPLY,
+        KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_VOLD,
+        KC_LSFT, MT_A,    MT_S,    MT_D,    MT_F,    KC_G,                      KC_H,    MT_J,    MT_K,    MT_L,    KC_QUOT, KC_MUTE,
+        KC_LCTL, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                      KC_N,    KC_M,    KC_COMM, KC_DOT,  __NOP__, KC_MPLY,
                                                      KC_DEL,  KC_ENT,  __NOP__, __NOP__,
                           __NOP__, KC_LGUI, __NOP__, LT_SBSP, LT_NSPC, LT_SOSS, LT_FENT, __NOP__, KC_LEFT, KC_RGHT
     ),
@@ -46,7 +46,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [LAYER_SYMBOLS] = SHARED_LAYOUT(
         KC_ESC,  __NOP__, __NOP__, __NOP__, __NOP__, __NOP__,                   __NOP__, __NOP__, __NOP__, __NOP__, __NOP__, __NOP__,
-        __NOP__, KC_QUOT, KC_LABK, KC_RABK, KC_DQUO, __NOP__,                   KC_GRV,  KC_AMPR, KC_LBRC, KC_RBRC, KC_PERC, __NOP__,
+        __NOP__, KC_QUOT, KC_LABK, KC_RABK, KC_DQUO, KC_GRV,                    KC_SCLN, KC_AMPR, KC_LBRC, KC_RBRC, KC_PERC, __NOP__,
         __NOP__, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_HASH,                   KC_COLN, KC_UNDS, KC_LPRN, KC_RPRN, KC_QUES, __NOP__,
         __NOP__, KC_CIRC, KC_SLSH, KC_ASTR, KC_BSLS, KC_DLR,                    KC_TILD, KC_PIPE, KC_LCBR, KC_RCBR, KC_AT,   __NOP__,
                                                      __NOP__, __NOP__, __NOP__, __NOP__,
