@@ -44,7 +44,7 @@ enum keycodes {
 #define MT_J HOME_ROW_5(KC_J)
 #define MT_K HOME_ROW_6(KC_K)
 #define MT_L HOME_ROW_7(KC_L)
-#define MT_SCLN HOME_ROW_8(KC_SCLN)
+#define MT_QUOT HOME_ROW_8(KC_QUOT)
 
 // Symbols home row
 #define MT_CMLW HOME_ROW_2(UC_CAMEL_WORD)
