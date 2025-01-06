@@ -14,7 +14,6 @@ LEADER_ENABLE = yes
 OS_DETECTION_ENABLE = yes
 
 INTROSPECTION_KEYMAP_C = shared/combos.c
-SRC += shared/autoshift.c
 SRC += shared/casemode.c
 SRC += shared/keymap.c
 SRC += shared/layers.c
