@@ -13,12 +13,11 @@ KEY_OVERRIDE_ENABLE = yes
 LEADER_ENABLE = yes
 OS_DETECTION_ENABLE = yes
 
-INTROSPECTION_KEYMAP_C = shared/combos.c
+INTROSPECTION_KEYMAP_C = shared/introspection.c
 SRC += shared/casemode.c
 SRC += shared/keymap.c
 SRC += shared/layers.c
 SRC += shared/leader.c
-SRC += shared/overrides.c
 SRC += shared/switcher.c
 SRC += shared/tap_hold.c
 SRC += empty.c
