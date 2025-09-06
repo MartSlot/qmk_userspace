@@ -68,8 +68,8 @@ bool oled_task_user(void) {
             case LAYER_GAMING_EXTRA:
                 oled_write_ln_P(PSTR("> Game+"), false);
                 oled_write_ln_P(PSTR(""), false);
-                oled_write_ln_P(PSTR("1 2 3 4 5"), false);
                 oled_write_ln_P(PSTR("6 7 8 9 0"), false);
+                oled_write_ln_P(PSTR("1 2 3 4 5"), false);
                 oled_write_ln_P(PSTR("B G T I M"), false);
                 oled_write_ln_P(PSTR("   Bsp Spc"), false);
                 break;
