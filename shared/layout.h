@@ -14,7 +14,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LSFT, MT_A,    MT_S,    MT_D,    MT_F,    KC_G,                      KC_H,    MT_J,    MT_K,    MT_L,    MT_QUOT, KC_MUTE,
         KC_LCTL, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                      KC_N,    KC_M,    KC_COMM, KC_DOT,  __NOP__, KC_MPLY,
                                                      KC_DEL,  KC_ENT,  __NOP__, __NOP__,
-                          __NOP__, KC_LGUI, __NOP__, LT_SBSP, LT_NSPC, LT_SOSS, LT_FENT, __NOP__, KC_LEFT, KC_RGHT
+                          LA_GAME, KC_LGUI, __NOP__, LT_SBSP, LT_NSPC, LT_SOSS, LT_FENT, __NOP__, KC_LEFT, KC_RGHT
     ),
 
     [LAYER_COMBOS] = SHARED_LAYOUT(
@@ -76,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         __NOP__, KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_VOLD,
         __NOP__, KC_TAB,  KC_A,    KC_S,    KC_D,    KC_F,                      KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_MUTE,
         __NOP__, KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,                      KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_QUOT, KC_MPLY,
-                                                     __NOP__, __NOP__, __NOP__, __NOP__,
+                                                     __NOP__, SW_WIN, __NOP__, __NOP__,
                           __NOP__, KC_LGUI, __NOP__, LA_GAMX, KC_SPC,  LA_QWER, LA_GAMX, __NOP__, KC_LEFT, KC_RGHT
     ),
 
