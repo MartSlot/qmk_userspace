@@ -20,6 +20,8 @@
 
 # OLED: optional, can be installed in socket
 OLED_ENABLE = yes          # Enable OLEDs, `yes` or `no`
+RGBLIGHT_ENABLE = yes
+RGB_MATRIX_ENABLE = no
 
 # Audio: optional, requires soldering
 # The Elora is equipped with a footprint
